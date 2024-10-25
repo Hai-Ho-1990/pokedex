@@ -1,0 +1,103 @@
+@import 'variables';
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f1eeee !important;
+}
+
+//Justering nav-bar
+
+.bg-body-tertiary {
+    --bs-bg-opacity: none !important;
+}
+
+.navbar-toggler:focus {
+    box-shadow: none !important;
+}
+
+.navbar-toggler {
+    border: none !important;
+}
+
+// Container mixins
+
+.navbar-nav a {
+    color: black;
+    font-family: $font-family-primary;
+    font-weight: 100;
+    font-size: 0.9rem;
+}
+
+.navbar-toggler {
+    padding-left: 0 !important;
+}
+
+.navbar-collapse {
+    background-color: white !important;
+
+    width: 100%;
+    z-index: 1;
+}
+
+// Justering header
+header {
+    background-color: white;
+    border-radius: 0 0 15px 15px;
+    height: 35vh;
+}
+
+#pokeball {
+    width: 250px;
+    opacity: 10%;
+    float: right;
+    position: relative;
+    bottom: 20%;
+    left: 10%;
+    z-index: 0;
+}
+
+// Justering fieldset
+fieldset {
+    position: absolute;
+    top: 22%;
+    width: 100%;
+}
+
+fieldset h1 {
+    font-family: $font-family-primary;
+    font-weight: bold;
+    font-size: 1.5rem;
+    position: relative;
+    left: 10%;
+}
+
+#search {
+    position: relative;
+    left: 7%;
+    border-radius: 15px;
+    width: 80%;
+    height: 40px;
+    z-index: 0;
+}
+
+#search-icon {
+    position: absolute;
+    margin-top: 1%;
+    right: 15%;
+
+    z-index: 1;
+}
+
+//Justering innehåll
+
+main h1 {
+    font-family: $font-family-primary;
+    font-weight: bold;
+    font-size: 1.5rem;
+    position: relative;
+    left: 13%;
+    margin-top: 20px;
+}
