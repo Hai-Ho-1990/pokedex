@@ -100,4 +100,43 @@ main h1 {
     position: relative;
     left: 13%;
     margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+/* Main börjar här */
+
+.pokemon-container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.card {
+    margin-bottom: 30px;
+    width: 7rem;
+    height: 7rem !important;
+    background-color: #d9d9d9 !important;
+    border: none !important;
+}
+
+.card-body h5 {
+    font-size: 0.7rem;
+    text-align: center;
+    position: relative;
+    bottom: 20px;
+}
+
+.card-body h6 {
+    font-size: 0.7rem;
+    position: relative;
+    bottom: 82px;
+    left: 70px;
+}
+
+.card-img-top {
+    width: 4.5rem !important;
+    align-self: center;
+    position: relative;
+    top: 15px;
 }

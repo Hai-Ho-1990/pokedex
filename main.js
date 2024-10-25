@@ -64,10 +64,11 @@ async function showAllPokemon() {
         let pokemonName = pokemon.name;
         let order = pokemon.id;
         //Skapar en card för varje pokemon och visa upp den på webbläsare
-        containerPokemon.innerHTML += `<div class="col-md-4"> <div class="card" style="width: 18rem;height: 18rem">
+        containerPokemon.innerHTML += `<div class="col-md-4"> <div class="card" >
     <img src="${imgSrc}" class="card-img-top" alt="...">
     <div class="card-body">
-      <h5 class="card-title"> #${order}<br>${pokemonName}</br></h5>
+      <h6 class="card-order"> #${order}</h6>
+      <h5 class="card-title"> ${pokemonName}</h5>
     </div>
   </div></div>`;
     });
