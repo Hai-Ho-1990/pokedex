@@ -68,13 +68,16 @@ fieldset h1 {
   left: 10%;
 }
 
-#search {
+#search:focus {
   position: relative;
   left: 7%;
   border-radius: 15px;
   width: 80%;
   height: 40px;
   z-index: 0;
+  padding-left: 20px;
+  background-color: #eeeeee;
+  outline: 0;
 }
 
 #search-icon {
@@ -105,12 +108,13 @@ main h1 {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
 }
 
 .card {
-  margin-bottom: 30px;
+  margin-bottom: 12px;
   width: 7rem;
   height: 7rem !important;
   background-color: #d9d9d9 !important;
@@ -137,4 +141,20 @@ main h1 {
       align-self: center;
   position: relative;
   top: 15px;
+}
+
+main {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.btn-danger {
+  -ms-flex-item-align: center;
+      align-self: center;
+  margin-top: 40px;
 }

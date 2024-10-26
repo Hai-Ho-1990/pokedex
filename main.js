@@ -2,6 +2,7 @@ const pokemonApi = 'https://pokeapi.co/api/v2/pokemon?limit=151';
 
 // Hämtar DOM
 let containerPokemon = document.querySelector('.pokemon-container');
+let loadMore = document.querySelector('.btn-danger');
 
 // Fetch Url och hämta url för 151 pokemon i json objekt
 
@@ -53,13 +54,21 @@ async function getPokemonInfo() {
 
 getPokemonInfo();
 
-//Visa alla pokemon i webbläsare
-async function showAllPokemon() {
-    let listOfPokemon = await getPokemonInfo();
-    containerPokemon.innerHTML = '';
+//Load more funktion
+let pokemonPerPage = 12; //deklarera antal pokemon ska visas.
+let currentPage = 1; //deklarera aktuell sidan
+let allPokemon = [];
+//Hämta pokemon
+async function displayPokemon() {
+    allPokemon = await getPokemonInfo();
+
+    let start = (currentPage - 1) * pokemonPerPage;
+    let end = currentPage * pokemonPerPage;
+    //Visa endast 12 pokemon "per" sidan
+    let pokemonToDisplay = allPokemon.slice(start, end);
 
     /* Vi har en lista av alla pokemon objekter. Loopa den listan för att ta ut varje pokemon och dess egenskaper */
-    listOfPokemon.forEach((pokemon) => {
+    pokemonToDisplay.forEach((pokemon) => {
         let imgSrc = pokemon.sprites.other['official-artwork'].front_default;
         let pokemonName = pokemon.name;
         let order = pokemon.id;
@@ -72,6 +81,17 @@ async function showAllPokemon() {
     </div>
   </div></div>`;
     });
+    //När det når 151 pokemon ska "load more" button döljas.
+    if (end >= allPokemon.length) {
+        loadMore.style.display = 'none';
+    }
 }
 
-showAllPokemon();
+//Varje gång button trycks ska en sidan med 12 pokemon visas.
+loadMore.addEventListener('click', () => {
+    currentPage++;
+
+    displayPokemon();
+});
+
+displayPokemon();
