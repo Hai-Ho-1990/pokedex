@@ -8,6 +8,64 @@ body {
   background-color: #f1eeee !important;
 }
 
+.red-mode {
+  display: inline;
+  z-index: 3;
+  position: absolute;
+  top: 15px;
+  left: 45%;
+}
+
+label {
+  width: 30px;
+  height: 15px;
+  background-color: #ebebeb;
+  border-radius: 200px;
+  -webkit-box-shadow: inset 0px 2px 5px rgba(0, 0, 0, 0.4), inset 0px -5px 15px rgba(255, 255, 255, 0.4);
+          box-shadow: inset 0px 2px 5px rgba(0, 0, 0, 0.4), inset 0px -5px 15px rgba(255, 255, 255, 0.4);
+  cursor: pointer;
+  position: relative;
+  display: block;
+}
+
+label::after {
+  content: "";
+  width: 11px;
+  height: 11px;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  background-color: #d91604;
+  border-radius: 40px;
+  -webkit-box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+          box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+  display: block;
+}
+
+input {
+  width: 0;
+  height: 0;
+  visibility: none;
+}
+
+input:checked + label {
+  background-color: #d91604;
+}
+
+input:checked + label:after {
+  -webkit-transform: translateX(-100%);
+          transform: translateX(-100%);
+  left: 28px;
+  background-color: white;
+}
+
+.navbar {
+  width: 100%;
+  z-index: 2;
+  position: absolute;
+  bottom: 250px;
+}
+
 .bg-body-tertiary {
   --bs-bg-opacity: none !important;
 }
@@ -24,8 +82,9 @@ body {
 .navbar-nav a {
   color: black;
   font-family: "Poppins", sans-serif;
-  font-weight: 100;
+  font-weight: 400;
   font-size: 0.9rem;
+  margin-top: 4%;
 }
 
 .navbar-toggler {
@@ -34,7 +93,7 @@ body {
 
 .navbar-collapse {
   background-color: white !important;
-  width: 100%;
+  height: 27vh;
   z-index: 1;
 }
 
@@ -42,6 +101,9 @@ header {
   background-color: white;
   border-radius: 0 0 15px 15px;
   height: 35vh;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  z-index: -1;
 }
 
 #pokeball {
@@ -68,7 +130,7 @@ fieldset h1 {
   left: 10%;
 }
 
-#search:focus {
+#search {
   position: relative;
   left: 7%;
   border-radius: 15px;
@@ -77,7 +139,11 @@ fieldset h1 {
   z-index: 0;
   padding-left: 20px;
   background-color: #eeeeee;
-  outline: 0;
+  border: none;
+}
+
+#search:focus {
+  outline: none;
 }
 
 #search-icon {
@@ -87,17 +153,17 @@ fieldset h1 {
   z-index: 1;
 }
 
+/* Main börjar här */
 main h1 {
   font-family: "Poppins", sans-serif;
   font-weight: bold;
   font-size: 1.5rem;
   position: relative;
-  left: 13%;
+  left: 10%;
   margin-top: 20px;
   margin-bottom: 20px;
 }
 
-/* Main börjar här */
 .pokemon-container {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -119,6 +185,7 @@ main h1 {
   height: 7rem !important;
   background-color: #d9d9d9 !important;
   border: none !important;
+  cursor: pointer;
 }
 
 .card-body h5 {

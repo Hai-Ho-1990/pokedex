@@ -95,3 +95,46 @@ loadMore.addEventListener('click', () => {
 });
 
 displayPokemon();
+
+//Ändra & spara header bakgrund färg när användare bockar av checkbox
+let checkbox = document.querySelector('#red-mode-toggle');
+let header = document.querySelector('header');
+let heading = document.querySelector('h1');
+let navIcon = document.querySelector('.navbar-toggler-icon');
+let navCollapse = document.querySelector('.navbar-collapse');
+let navLink = document.querySelectorAll('.navbar-nav a');
+
+//Skapar först stilar för header när användare bockar av knappen.
+function changeStyle() {
+    if (checkbox.checked) {
+        (header.style = 'background: #C61700'),
+            (heading.style = 'color: white'),
+            (navIcon.style = 'color:white'),
+            (navCollapse.style = 'background: #C61700 !important');
+        for (let i = 0; i < navLink.length; i++) {
+            navLink[i].style = 'color:white !important';
+        }
+    } else if (!checkbox.checked) {
+        (header.style = 'background:white'),
+            (heading.style = 'color: black'),
+            (navCollapse.style = 'background: white !important');
+        for (let i = 0; i < navLink.length; i++) {
+            navLink[i].style = 'color:black !important';
+        }
+    }
+}
+
+// Så fort användaren klickar så sparas checkboxen status och ändrar webbläsares bakgrundsfärg
+checkbox.addEventListener('click', function () {
+    // Värde måste vara en sträng därför man ska konvertera statusen till sträng
+    localStorage.setItem('checkboxStatus', JSON.stringify(checkbox.checked));
+
+    changeStyle();
+});
+
+// Man hämtar statusen som man har sparat och applicera dess stilar till webbläsaren.
+let saveCheckboxStatus = localStorage.getItem('checkboxStatus');
+if (saveCheckboxStatus) {
+    checkbox.checked = JSON.parse(saveCheckboxStatus);
+    changeStyle();
+}
