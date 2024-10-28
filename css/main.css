@@ -238,7 +238,6 @@ main {
   -ms-flex-item-align: center;
       align-self: center;
   margin-top: 40px;
-  margin-bottom: 40px;
 }
 
 .message {
@@ -260,6 +259,7 @@ footer {
   background-color: white;
   height: 17vh;
   border-radius: 15px 15px 0 0;
+  margin-top: 40px;
 }
 
 .footer-container {

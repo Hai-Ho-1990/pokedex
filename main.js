@@ -227,6 +227,6 @@ loadMore.addEventListener('click', () => {
 //------------------------------------------------------------------------------
 
 // När man klickar på en specifik pokemon så hänvisar det till en annan html sidan.
-pokedexContainer.addEventListener('click', function () {
+containerPokemon.addEventListener('click', function () {
     window.location.href = 'detail.html';
 });
