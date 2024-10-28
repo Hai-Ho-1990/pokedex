@@ -14,7 +14,7 @@ body {
     z-index: 3;
     position: absolute;
     top: 15px;
-    left: 45%;
+    left: 85%;
 }
 label {
     width: 30px;
@@ -59,7 +59,7 @@ input:checked + label:after {
 
 //Justering nav-bar
 .navbar {
-    width: 100%;
+    width: 103%;
     z-index: 2;
     position: absolute;
     bottom: 250px;
@@ -83,6 +83,18 @@ input:checked + label:after {
     font-weight: 400;
     font-size: 0.9rem;
     margin-top: 4%;
+}
+.nav-link {
+    position: relative;
+}
+.nav-link:after {
+    content: '';
+    height: 1px;
+    width: 107%;
+    background: rgb(216, 216, 216);
+    position: absolute;
+    bottom: 0;
+    left: -12px;
 }
 
 .navbar-toggler {
@@ -211,4 +223,42 @@ main {
 .btn-danger {
     align-self: center;
     margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+/* Footer */
+footer {
+    background-color: white;
+    height: 17vh;
+    border-radius: 15px 15px 0 0;
+}
+
+.footer-container {
+    position: relative;
+    top: 55px;
+}
+
+.footer-icon {
+    width: 27px;
+    padding-right: 5px;
+}
+
+.footer-icon-white {
+    width: 27px;
+    padding-right: 5px;
+}
+
+.icons {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    top: 30px;
+}
+
+p {
+    position: relative;
+    top: 40px;
+    text-align: center;
+    font-family: $font-family-primary;
+    font-size: 0.5rem;
 }

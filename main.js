@@ -61,10 +61,11 @@ let allPokemon = [];
 //Hämta pokemon
 async function displayPokemon() {
     allPokemon = await getPokemonInfo();
-
+    // Start index
     let start = (currentPage - 1) * pokemonPerPage;
+    // Sista index
     let end = currentPage * pokemonPerPage;
-    //Visa endast 12 pokemon "per" sidan
+    //Visa endast 12 pokemon på sidan
     let pokemonToDisplay = allPokemon.slice(start, end);
 
     /* Vi har en lista av alla pokemon objekter. Loopa den listan för att ta ut varje pokemon och dess egenskaper */
@@ -96,7 +97,7 @@ loadMore.addEventListener('click', () => {
 
 displayPokemon();
 
-//Ändra & spara header bakgrund färg när användare bockar av checkbox
+//Ändra & spara header & footer bakgrund färg när användare bockar av checkbox
 let checkbox = document.querySelector('#red-mode-toggle');
 let header = document.querySelector('header');
 let heading = document.querySelector('h1');
@@ -104,22 +105,38 @@ let navIcon = document.querySelector('.navbar-toggler-icon');
 let navCollapse = document.querySelector('.navbar-collapse');
 let navLink = document.querySelectorAll('.navbar-nav a');
 
+let footer = document.querySelector('footer');
+let footerIcons = document.querySelectorAll('.footer-icon');
+let whiteIcons = document.querySelectorAll('.footer-icon-white');
+let copyright = document.querySelector('p');
+
 //Skapar först stilar för header när användare bockar av knappen.
 function changeStyle() {
     if (checkbox.checked) {
         (header.style = 'background: #C61700'),
             (heading.style = 'color: white'),
             (navIcon.style = 'color:white'),
-            (navCollapse.style = 'background: #C61700 !important');
+            (navCollapse.style = 'background: #C61700 !important'),
+            (copyright.style = 'color: white'),
+            (footer.style = 'background:#C61700');
         for (let i = 0; i < navLink.length; i++) {
             navLink[i].style = 'color:white !important';
+        }
+        for (let i = 0; i < footerIcons.length; i++) {
+            whiteIcons[i].style.display = 'block';
+            footerIcons[i].style.display = 'none';
         }
     } else if (!checkbox.checked) {
         (header.style = 'background:white'),
             (heading.style = 'color: black'),
-            (navCollapse.style = 'background: white !important');
+            (navCollapse.style = 'background: white !important'),
+            (footer.style = 'background: white');
         for (let i = 0; i < navLink.length; i++) {
             navLink[i].style = 'color:black !important';
+        }
+        for (let i = 0; i < footerIcons.length; i++) {
+            whiteIcons[i].style.display = 'none';
+            footerIcons[i].style.display = 'block';
         }
     }
 }
