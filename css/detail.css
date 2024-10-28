@@ -1,0 +1,176 @@
+/* Header */
+.red-mode {
+  display: inline;
+  z-index: 3;
+  position: absolute;
+  top: 15px;
+  left: 85%;
+}
+
+label {
+  width: 30px;
+  height: 15px;
+  background-color: #ebebeb;
+  border-radius: 200px;
+  -webkit-box-shadow: inset 0px 2px 5px rgba(0, 0, 0, 0.4), inset 0px -5px 15px rgba(255, 255, 255, 0.4);
+          box-shadow: inset 0px 2px 5px rgba(0, 0, 0, 0.4), inset 0px -5px 15px rgba(255, 255, 255, 0.4);
+  cursor: pointer;
+  position: relative;
+  display: block;
+}
+
+label::after {
+  content: "";
+  width: 11px;
+  height: 11px;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  background-color: #d91604;
+  border-radius: 40px;
+  -webkit-box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+          box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+  display: block;
+}
+
+input {
+  width: 0;
+  height: 0;
+  visibility: none;
+}
+
+input:checked + label {
+  background-color: #d91604;
+}
+
+input:checked + label:after {
+  -webkit-transform: translateX(-100%);
+          transform: translateX(-100%);
+  left: 28px;
+  background-color: white;
+}
+
+.navbar {
+  width: 103%;
+  z-index: 2;
+  position: absolute;
+  bottom: 250px;
+}
+
+.bg-body-tertiary {
+  --bs-bg-opacity: none !important;
+}
+
+.navbar-toggler:focus {
+  -webkit-box-shadow: none !important;
+          box-shadow: none !important;
+}
+
+.navbar-toggler {
+  border: none !important;
+}
+
+.navbar-nav a {
+  color: black;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-size: 0.9rem;
+  margin-top: 4%;
+}
+
+.nav-link {
+  position: relative;
+}
+
+.nav-link:after {
+  content: "";
+  height: 1px;
+  width: 107%;
+  background: rgb(216, 216, 216);
+  position: absolute;
+  bottom: 0;
+  left: -12px;
+}
+
+.navbar-toggler {
+  padding-left: 0 !important;
+}
+
+.navbar-collapse {
+  background-color: white !important;
+  height: 27vh;
+  z-index: 1;
+}
+
+header {
+  background-color: white;
+  border-radius: 0 0 15px 15px;
+  height: 35vh;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  z-index: -1;
+}
+
+#pokeball {
+  width: 250px;
+  opacity: 10%;
+  float: right;
+  position: relative;
+  bottom: 20%;
+  left: 10%;
+  z-index: 0;
+}
+
+/* Footer */
+footer {
+  background-color: white;
+  height: 17vh;
+  border-radius: 15px 15px 0 0;
+  margin-top: 40px;
+}
+
+.footer-container {
+  position: relative;
+  top: 55px;
+}
+
+.footer-icon {
+  width: 27px;
+  padding-right: 5px;
+  opacity: 70%;
+}
+
+.footer-icon-white {
+  width: 27px;
+  padding-right: 5px;
+  opacity: 70%;
+}
+
+.icons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  position: relative;
+  top: 30px;
+}
+
+p {
+  position: relative;
+  top: 40px;
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+  font-size: 0.5rem;
+  opacity: 70%;
+}
+
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  background-color: #f1eeee !important;
+}
