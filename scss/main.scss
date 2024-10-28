@@ -226,6 +226,19 @@ main {
     margin-bottom: 40px;
 }
 
+.message {
+    align-content: center;
+}
+
+.message h2 {
+    font-family: $font-family-primary;
+    margin: 0;
+    font-weight: bolder;
+    text-align: center;
+    font-size: 1.5rem;
+    opacity: 60%;
+}
+
 /* Footer */
 footer {
     background-color: white;
@@ -241,11 +254,13 @@ footer {
 .footer-icon {
     width: 27px;
     padding-right: 5px;
+    opacity: 70%;
 }
 
 .footer-icon-white {
     width: 27px;
     padding-right: 5px;
+    opacity: 70%;
 }
 
 .icons {
@@ -261,4 +276,5 @@ p {
     text-align: center;
     font-family: $font-family-primary;
     font-size: 0.5rem;
+    opacity: 70%;
 }
