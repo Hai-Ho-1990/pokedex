@@ -1,33 +1,41 @@
-"use strict";
 const pokemonApi = 'https://pokeapi.co/api/v2/pokemon?limit=151';
+
 // Hämtar DOM
 let containerPokemon = document.querySelector('.pokemon-container');
 let loadMore = document.querySelector('.btn-danger');
 let filteredPokemon = [];
+
 // Fetch Url och hämta url för 151 pokemon i json objekt
+
 async function fetchPokemonApi() {
     try {
         let response = await fetch(pokemonApi);
         if (!response.ok) {
-            throw new Error('Nätverksresponsen var inte okej: ' + response.status);
+            throw new Error(
+                'Nätverksresponsen var inte okej: ' + response.status
+            );
         }
         let data = await response.json();
         let result = data.results;
         console.log(result);
         return result;
-    }
-    catch (error) {
+    } catch (error) {
         console.error('Det gick inte att hämta data', error);
     }
 }
+
 fetchPokemonApi();
+
 //Skapa en ny funktion och köra ovanför function för att hämta alla url om varenda pokemon
 async function getPokemonUrl() {
     let response = await fetchPokemonApi();
     let pokemonUrl = response.map((pokemon) => pokemon.url);
+    console.log(pokemonUrl);
     return pokemonUrl;
 }
+
 getPokemonUrl();
+
 //Fetch alla 151 url från ovanför funktion till 151 objekt
 async function getPokemonInfo() {
     let promises = []; // tom array för att spara alla promise efter fetch klart getPokemonUrl()
@@ -35,14 +43,19 @@ async function getPokemonInfo() {
     //Loopa och fetcha alla url och lägg resultat i en tom array
     for (let i = 0; i < array.length; i++) {
         let pokemonData = fetch(array[i]).then((response) => response.json());
+
         promises.push(pokemonData);
     }
+
     // Vänta på att alla promises ska avslutas och samla resultaten
     let pokemons = await Promise.all(promises);
     console.log(pokemons); // Logga resultaten (array av Pokémon-objekt)
     return pokemons; // Returnera arrayen med Pokémon-objekt
 }
+
 getPokemonInfo();
+
+//Load more funktion
 let pokemonPerPage = 12; //deklarera antal pokemon ska visas.
 let currentPage = 1; //deklarera aktuell sidan
 let allPokemon = [];
@@ -55,6 +68,7 @@ async function displayPokemon() {
     let end = currentPage * pokemonPerPage;
     //Visa endast 12 pokemon på sidan
     let pokemonToDisplay = allPokemon.slice(start, end);
+
     /* Vi har en lista av alla pokemon objekter. Loopa den listan för att ta ut varje pokemon och dess egenskaper */
     pokemonToDisplay.forEach((pokemon) => {
         let imgSrc = pokemon.sprites.other['official-artwork'].front_default;
@@ -75,39 +89,42 @@ async function displayPokemon() {
     }
 }
 displayPokemon();
+
 //------------------------------------------------------------------------------
+
 //Ändra & spara header & footer bakgrund färg när användare bockar av checkbox
 let checkbox = document.querySelector('#red-mode-toggle');
 let header = document.querySelector('header');
 let heading = document.querySelector('h1');
 let navIcon = document.querySelector('.navbar-toggler-icon');
 let navCollapse = document.querySelector('.navbar-collapse');
-let navLink = document.querySelectorAll('.navbar-nav a'); // lösning till när man väljer flera elements.
+let navLink = document.querySelectorAll('.navbar-nav a');
+
 let footer = document.querySelector('footer');
 let footerIcons = document.querySelectorAll('.footer-icon');
 let whiteIcons = document.querySelectorAll('.footer-icon-white');
 let copyright = document.querySelector('p');
+
 //Skapar först stilar för header när användare bockar av knappen.
 function changeStyle() {
     if (checkbox.checked) {
-        header.style.background = '#C61700';
-        heading.style.color = 'white';
-        navIcon.style.color = 'white';
-        navCollapse.style.background = '#C61700 !important';
-        copyright.style.color = 'white';
-        footer.style.background = '#C61700';
+        (header.style = 'background: #C61700'),
+            (heading.style = 'color: white'),
+            (navIcon.style = 'color:white'),
+            (navCollapse.style = 'background: #C61700 !important'),
+            (copyright.style = 'color: white'),
+            (footer.style = 'background:#C61700');
         for (let i = 0; i < navLink.length; i++) {
-            navLink[i].style.color = 'white !important';
+            navLink[i].style = 'color:white !important';
         }
         for (let i = 0; i < footerIcons.length; i++) {
             whiteIcons[i].style.display = 'block';
             footerIcons[i].style.display = 'none';
         }
-    }
-    else if (!checkbox.checked) {
-        header.style.background = 'white';
-        heading.style.color = 'black';
-        (navCollapse.style = 'background: white !important'),
+    } else if (!checkbox.checked) {
+        (header.style = 'background:white'),
+            (heading.style = 'color: black'),
+            (navCollapse.style = 'background: white !important'),
             (copyright.style = 'color: black'),
             (footer.style = 'background: white');
         for (let i = 0; i < navLink.length; i++) {
@@ -119,34 +136,42 @@ function changeStyle() {
         }
     }
 }
+
 // Så fort användaren klickar så sparas checkboxen status och ändrar webbläsares bakgrundsfärg
 checkbox.addEventListener('click', function () {
     // Värde måste vara en sträng därför man ska konvertera statusen till sträng
     localStorage.setItem('checkboxStatus', JSON.stringify(checkbox.checked));
+
     changeStyle();
 });
+
 // Man hämtar statusen som man har sparat och applicera dess stilar till webbläsaren.
 let saveCheckboxStatus = localStorage.getItem('checkboxStatus');
 if (saveCheckboxStatus) {
     checkbox.checked = JSON.parse(saveCheckboxStatus);
     changeStyle();
 }
+
 //------------------------------------------------------------------------------
 /* Pokemon sökning */
 let message = document.querySelector('.message');
 let inputElement = document.getElementById('search');
 let pokedexText = document.querySelector('main h1');
+
 inputElement.addEventListener('input', function (event) {
     let input = event.target.value.toLowerCase(); //
-    filteredPokemon = allPokemon.filter((pokemon) => pokemon.name.toLowerCase().includes(input));
+
+    filteredPokemon = allPokemon.filter((pokemon) =>
+        pokemon.name.toLowerCase().includes(input)
+    );
     containerPokemon.innerHTML = '';
+
     //Om det finns inga pokemon att visa ska fel meddelande visas upp.
     if (filteredPokemon.length === 0) {
         message.style.display = 'block';
         loadMore.style.display = 'none';
         pokedexText.style.display = 'none';
-    }
-    else {
+    } else {
         message.style.display = 'none';
         displayFilteredPokemon();
     }
@@ -156,6 +181,7 @@ inputElement.addEventListener('input', function (event) {
         loadMore.style.display = 'block';
     }
 });
+
 //Skapa en funktion för att visa filtrerad pokemon
 function displayFilteredPokemon() {
     //start index
@@ -164,12 +190,13 @@ function displayFilteredPokemon() {
     let end = currentPage * pokemonPerPage;
     //Visa endast 12 pokemon på sidan
     let pokemonToDisplay = filteredPokemon.slice(start, end);
+
     if (end >= filteredPokemon.length) {
         loadMore.style.display = 'none';
-    }
-    else {
+    } else {
         loadMore.style.display = 'block';
     }
+
     // Vi har en lista av alla pokemon objekter. Loopa den listan för att ta ut varje pokemon och dess egenskaper */
     pokemonToDisplay.forEach((pokemon) => {
         let imgSrc = pokemon.sprites.other['official-artwork'].front_default;
@@ -185,20 +212,21 @@ function displayFilteredPokemon() {
   </div></div>`;
     });
 }
+
 //Varje gång button trycks ska en sidan med 12 pokemon visas.
 loadMore.addEventListener('click', () => {
     currentPage++;
     // Om sökfältet är tom så visas alla pokemon annars endast filtrerad pokemon visas.
     if (inputElement.value.trim() === '') {
         displayPokemon();
-    }
-    else {
+    } else {
         displayFilteredPokemon();
     }
 });
+
 //------------------------------------------------------------------------------
+
 // När man klickar på en specifik pokemon så hänvisar det till en annan html sidan.
 containerPokemon.addEventListener('click', function () {
     window.location.href = 'detail.html';
 });
-//# sourceMappingURL=main.js.map

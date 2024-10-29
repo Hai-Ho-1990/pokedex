@@ -79,7 +79,7 @@ input:checked + label:after {
 
 .navbar-nav a {
     color: black;
-    font-family: $font-family-primary;
+    font-family: 'Poppins', sans-serif;
     font-weight: 400;
     font-size: 0.9rem;
     margin-top: 4%;
@@ -134,7 +134,7 @@ fieldset {
 }
 
 fieldset h1 {
-    font-family: $font-family-primary;
+    font-family: 'Poppins', sans-serif;
     font-weight: bold;
     font-size: 1.5rem;
     position: relative;
@@ -169,7 +169,7 @@ fieldset h1 {
 //Justering innehåll
 
 main h1 {
-    font-family: $font-family-primary;
+    font-family: 'Poppins', sans-serif;
     font-weight: bold;
     font-size: 1.5rem;
     position: relative;
@@ -230,7 +230,7 @@ main {
 }
 
 .message h2 {
-    font-family: $font-family-primary;
+    font-family: 'Poppins', sans-serif;
     margin: 0;
     font-weight: bolder;
     text-align: center;
@@ -274,7 +274,7 @@ p {
     position: relative;
     top: 40px;
     text-align: center;
-    font-family: $font-family-primary;
+    font-family: 'Poppins', sans-serif;
     font-size: 0.5rem;
     opacity: 70%;
 }

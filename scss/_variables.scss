@@ -1,5 +1,3 @@
-$font-family-primary: 'Poppins', sans-serif;
-
 /* Header */
 //Skapa red mode button
 .red-mode {
@@ -72,7 +70,7 @@ input:checked + label:after {
 
 .navbar-nav a {
     color: black;
-    font-family: $font-family-primary;
+    font-family: 'Poppins', sans-serif;
     font-weight: 400;
     font-size: 0.9rem;
     margin-top: 4%;
@@ -155,7 +153,7 @@ p {
     position: relative;
     top: 40px;
     text-align: center;
-    font-family: $font-family-primary;
+    font-family: 'Poppins', sans-serif;
     font-size: 0.5rem;
     opacity: 70%;
 }
