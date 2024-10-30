@@ -87,7 +87,7 @@ input:checked + label:after {
 .nav-link {
     position: relative;
 }
-.nav-link:after {
+/* .nav-link:after {
     content: '';
     height: 1px;
     width: 107%;
@@ -95,7 +95,7 @@ input:checked + label:after {
     position: absolute;
     bottom: 0;
     left: -12px;
-}
+} */
 
 .navbar-toggler {
     padding-left: 0 !important;

@@ -138,11 +138,12 @@ function changeStyle() {
         header.style.background = '#C61700';
         heading.style.color = 'white';
         navIcon.style.color = 'white';
-        navCollapse.style.background = '#C61700 !important';
+        navCollapse.style.setProperty('background', '#C61700', 'important');
+
         copyright.style.color = 'white';
         footer.style.background = '#C61700';
         for (let i = 0; i < navLink.length; i++) {
-            navLink[i].style.color = 'white !important';
+            navLink[i].style.setProperty('color', 'white', 'important');
         }
         for (let i = 0; i < footerIcons.length; i++) {
             whiteIcons[i].style.display = 'block';
@@ -151,11 +152,11 @@ function changeStyle() {
     } else if (!checkbox.checked) {
         header.style.background = 'white';
         heading.style.color = 'black';
-        navCollapse.style.background = 'white !important';
+        navCollapse.style.setProperty('background', '', 'important');
         copyright.style.color = 'black';
         footer.style.background = 'white';
         for (let i = 0; i < navLink.length; i++) {
-            navLink[i].style.color = 'black !important';
+            navLink[i].style.setProperty('color', 'black', 'important');
         }
         for (let i = 0; i < footerIcons.length; i++) {
             whiteIcons[i].style.display = 'none';

@@ -82,16 +82,15 @@ input:checked + label:after {
   position: relative;
 }
 
-.nav-link:after {
-  content: "";
-  height: 1px;
-  width: 107%;
-  background: rgb(216, 216, 216);
-  position: absolute;
-  bottom: 0;
-  left: -12px;
-}
-
+/* .nav-link:after {
+    content: '';
+    height: 1px;
+    width: 107%;
+    background: rgb(216, 216, 216);
+    position: absolute;
+    bottom: 0;
+    left: -12px;
+} */
 .navbar-toggler {
   padding-left: 0 !important;
 }

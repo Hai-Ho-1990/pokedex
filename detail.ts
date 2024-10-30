@@ -1,6 +1,6 @@
 let checkbox = document.querySelector('#red-mode-toggle')! as HTMLInputElement;
 let header = document.querySelector('header')!;
-let heading = document.querySelector('h1')!;
+
 let navIcon = document.querySelector('.navbar-toggler-icon')! as HTMLElement;
 let navCollapse = document.querySelector('.navbar-collapse')! as HTMLElement;
 let navLink = document.querySelectorAll(
@@ -17,16 +17,16 @@ let whiteIcons = document.querySelectorAll(
 let copyright = document.querySelector('p')!;
 
 //Skapar först stilar för header när användare bockar av knappen.
-function changeStyle() {
+function changeStyleDetail() {
     if (checkbox.checked) {
         header.style.background = '#C61700';
 
         navIcon.style.color = 'white';
-        navCollapse.style.background = '#C61700 !important';
-        copyright.style.color = 'white';
+        navCollapse.style.setProperty('background', '#C61700', 'important');
+        copyright.style.setProperty('color', 'white', 'important');
         footer.style.background = '#C61700';
         for (let i = 0; i < navLink.length; i++) {
-            navLink[i].style.color = 'white !important';
+            navLink[i].style.setProperty('color', 'white', 'important');
         }
         for (let i = 0; i < footerIcons.length; i++) {
             whiteIcons[i].style.display = 'block';
@@ -35,11 +35,11 @@ function changeStyle() {
     } else if (!checkbox.checked) {
         header.style.background = 'white';
 
-        navCollapse.style.background = 'white !important';
+        navCollapse.style.background = 'white';
         copyright.style.color = 'black';
         footer.style.background = 'white';
         for (let i = 0; i < navLink.length; i++) {
-            navLink[i].style.color = 'black !important';
+            navLink[i].style.color = 'black';
         }
         for (let i = 0; i < footerIcons.length; i++) {
             whiteIcons[i].style.display = 'none';
@@ -57,7 +57,7 @@ function setupCheckboxListener() {
             JSON.stringify(checkbox.checked)
         );
 
-        changeStyle();
+        changeStyleDetail();
     });
 }
 setupCheckboxListener();
@@ -66,7 +66,7 @@ setupCheckboxListener();
 let saveCheckboxStatus = localStorage.getItem('checkboxStatus');
 if (saveCheckboxStatus) {
     checkbox.checked = JSON.parse(saveCheckboxStatus);
-    changeStyle();
+    changeStyleDetail();
 }
 
 //-----------------------------------------------------
