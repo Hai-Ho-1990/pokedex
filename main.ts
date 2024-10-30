@@ -108,6 +108,7 @@ async function displayPokemon() {
         loadMore.style.display = 'none';
     }
 }
+
 displayPokemon();
 
 //------------------------------------------------------------------------------
@@ -150,11 +151,11 @@ function changeStyle() {
     } else if (!checkbox.checked) {
         header.style.background = 'white';
         heading.style.color = 'black';
-        (navCollapse.style = 'background: white !important'),
-            (copyright.style = 'color: black'),
-            (footer.style = 'background: white');
+        navCollapse.style.background = 'white !important';
+        copyright.style.color = 'black';
+        footer.style.background = 'white';
         for (let i = 0; i < navLink.length; i++) {
-            navLink[i].style = 'color:black !important';
+            navLink[i].style.color = 'black !important';
         }
         for (let i = 0; i < footerIcons.length; i++) {
             whiteIcons[i].style.display = 'none';
@@ -164,12 +165,18 @@ function changeStyle() {
 }
 
 // Så fort användaren klickar så sparas checkboxen status och ändrar webbläsares bakgrundsfärg
-checkbox.addEventListener('click', function () {
-    // Värde måste vara en sträng därför man ska konvertera statusen till sträng
-    localStorage.setItem('checkboxStatus', JSON.stringify(checkbox.checked));
+export function setupCheckboxListener() {
+    checkbox.addEventListener('click', function () {
+        // Värde måste vara en sträng därför man ska konvertera statusen till sträng
+        localStorage.setItem(
+            'checkboxStatus',
+            JSON.stringify(checkbox.checked)
+        );
 
-    changeStyle();
-});
+        changeStyle();
+    });
+}
+setupCheckboxListener();
 
 // Man hämtar statusen som man har sparat och applicera dess stilar till webbläsaren.
 let saveCheckboxStatus = localStorage.getItem('checkboxStatus');
@@ -180,12 +187,12 @@ if (saveCheckboxStatus) {
 
 //------------------------------------------------------------------------------
 /* Pokemon sökning */
-let message = document.querySelector('.message');
-let inputElement = document.getElementById('search');
-let pokedexText = document.querySelector('main h1');
+let message = document.querySelector('.message')! as HTMLElement;
+let inputElement = document.getElementById('search')! as HTMLInputElement;
+let pokedexText = document.querySelector('main h1')! as HTMLElement;
 
 inputElement.addEventListener('input', function (event) {
-    let input = event.target.value.toLowerCase(); //
+    let input = (event.target as HTMLInputElement).value.toLowerCase(); //
 
     filteredPokemon = allPokemon.filter((pokemon) =>
         pokemon.name.toLowerCase().includes(input)
@@ -202,8 +209,7 @@ inputElement.addEventListener('input', function (event) {
         displayFilteredPokemon();
     }
     //Om användaren rensar sökning ska alla pokemon visas igen.
-    if (inputElement.value === 0) {
-        displayPokemon();
+    if (inputElement.value.length === 0) {
         loadMore.style.display = 'block';
     }
 });

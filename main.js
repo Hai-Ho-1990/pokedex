@@ -1,4 +1,3 @@
-"use strict";
 const pokemonApi = 'https://pokeapi.co/api/v2/pokemon?limit=151';
 // Hämtar DOM
 let containerPokemon = document.querySelector('.pokemon-container');
@@ -107,11 +106,11 @@ function changeStyle() {
     else if (!checkbox.checked) {
         header.style.background = 'white';
         heading.style.color = 'black';
-        (navCollapse.style = 'background: white !important'),
-            (copyright.style = 'color: black'),
-            (footer.style = 'background: white');
+        navCollapse.style.background = 'white !important';
+        copyright.style.color = 'black';
+        footer.style.background = 'white';
         for (let i = 0; i < navLink.length; i++) {
-            navLink[i].style = 'color:black !important';
+            navLink[i].style.color = 'black !important';
         }
         for (let i = 0; i < footerIcons.length; i++) {
             whiteIcons[i].style.display = 'none';
@@ -120,11 +119,14 @@ function changeStyle() {
     }
 }
 // Så fort användaren klickar så sparas checkboxen status och ändrar webbläsares bakgrundsfärg
-checkbox.addEventListener('click', function () {
-    // Värde måste vara en sträng därför man ska konvertera statusen till sträng
-    localStorage.setItem('checkboxStatus', JSON.stringify(checkbox.checked));
-    changeStyle();
-});
+export function setupCheckboxListener() {
+    checkbox.addEventListener('click', function () {
+        // Värde måste vara en sträng därför man ska konvertera statusen till sträng
+        localStorage.setItem('checkboxStatus', JSON.stringify(checkbox.checked));
+        changeStyle();
+    });
+}
+setupCheckboxListener();
 // Man hämtar statusen som man har sparat och applicera dess stilar till webbläsaren.
 let saveCheckboxStatus = localStorage.getItem('checkboxStatus');
 if (saveCheckboxStatus) {
@@ -151,8 +153,7 @@ inputElement.addEventListener('input', function (event) {
         displayFilteredPokemon();
     }
     //Om användaren rensar sökning ska alla pokemon visas igen.
-    if (inputElement.value === 0) {
-        displayPokemon();
+    if (inputElement.value.length === 0) {
         loadMore.style.display = 'block';
     }
 });
