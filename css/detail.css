@@ -156,7 +156,7 @@ footer {
   top: 30px;
 }
 
-p {
+.footer-container > p {
   position: relative;
   top: 40px;
   text-align: center;
@@ -172,4 +172,8 @@ p {
 
 body {
   background-color: #f1eeee !important;
+}
+
+.pokemon-image img {
+  width: 100%;
 }

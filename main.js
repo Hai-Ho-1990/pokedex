@@ -1,4 +1,4 @@
-const pokemonApi = 'https://pokeapi.co/api/v2/pokemon?limit=151';
+export const pokemonApi = 'https://pokeapi.co/api/v2/pokemon?limit=151';
 // Hämtar DOM
 let containerPokemon = document.querySelector('.pokemon-container');
 let loadMore = document.querySelector('.btn-danger');
@@ -60,7 +60,9 @@ async function displayPokemon() {
         let pokemonName = pokemon.name;
         let order = pokemon.id;
         //Skapar en card för varje pokemon och visa upp den på webbläsare
-        containerPokemon.innerHTML += `<div class="col-md-4"> <div class="card" >
+        containerPokemon.innerHTML += `<div class="col-md-4">
+        <a href="detail.html?id=${order}" style="text-decoration:none" >
+        <div class="card" >
     <img src="${imgSrc}" class="card-img-top" alt="...">
     <div class="card-body">
       <h6 class="card-order"> #${order}</h6>
@@ -198,8 +200,10 @@ loadMore.addEventListener('click', () => {
     }
 });
 //------------------------------------------------------------------------------
-// När man klickar på en specifik pokemon så hänvisar det till en annan html sidan.
+//Get pokemon id
+/* // När man klickar på en specifik pokemon så hänvisar det till en annan html sidan.
 containerPokemon.addEventListener('click', function () {
-    window.location.href = 'detail.html';
+    window.location.href = `detail.html?id=${pokemonId}`;
 });
+ */
 //# sourceMappingURL=main.js.map
