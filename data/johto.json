@@ -1,0 +1,44 @@
+{
+    "johto": [
+        {
+            "name": "Chikorika",
+            "order": 152,
+            "image": "https://archives.bulbagarden.net/media/upload/b/bc/0152Chikorita.png",
+            "types": [
+                {
+                    "type": {
+                        "name": "grass"
+                    }
+                }
+            ],
+            "weight": 640,
+            "height": 90,
+            "stats": [
+                {
+                    "name": "Hp",
+                    "base_stat": 45
+                },
+                {
+                    "name": "Atk",
+                    "base_stat": 49
+                },
+                {
+                    "name": "Defense",
+                    "base_stat": 65
+                },
+                {
+                    "name": "SpAtk",
+                    "base_stat": 49
+                },
+                {
+                    "name": "SpDef",
+                    "base_stat": 65
+                },
+                {
+                    "name": "Speed",
+                    "base_stat": 45
+                }
+            ]
+        }
+    ]
+}

@@ -64,12 +64,12 @@ async function displayPokemon() {
         containerPokemon.innerHTML += `<div class="col-md-4">
         <a href="detail.html?id=${order}" style="text-decoration:none" >
         <div class="card" >
-    <img src="${imgSrc}" class="card-img-top" alt="...">
-    <div class="card-body">
-      <h6 class="card-order"> #${order}</h6>
-      <h5 class="card-title"> ${pokemonName}</h5>
-    </div>
-  </div></div>`;
+        <img src="${imgSrc}" class="card-img-top" alt="...">
+        <div class="card-body">
+        <h6 class="card-order"> #${order}</h6>
+        <h5 class="card-title"> ${pokemonName}</h5>
+        </div>
+        </div></div>`;
     });
     //När det når 151 pokemon ska "load more" button döljas.
     if (end >= allPokemon.length) {
@@ -180,13 +180,14 @@ function displayFilteredPokemon() {
         let pokemonName = pokemon.name;
         let order = pokemon.id;
         //Skapar en card för varje pokemon och visa upp den på webbläsare
-        containerPokemon.innerHTML += `<div class="col-md-4"> <div class="card" >
-    <img src="${imgSrc}" class="card-img-top" alt="...">
-    <div class="card-body">
-      <h6 class="card-order"> #${order}</h6>
-      <h5 class="card-title"> ${pokemonName}</h5>
-    </div>
-  </div></div>`;
+        containerPokemon.innerHTML += `<div class="col-md-4">
+        <a href="detail.html?id=${order}" style="text-decoration:none" > <div class="card" >
+        <img src="${imgSrc}" class="card-img-top" alt="...">
+        <div class="card-body">
+        <h6 class="card-order"> #${order}</h6>
+        <h5 class="card-title"> ${pokemonName}</h5>
+        </div>
+        </div></div>`;
     });
 }
 //Varje gång button trycks ska en sidan med 12 pokemon visas.
@@ -200,5 +201,12 @@ loadMore.addEventListener('click', () => {
         displayFilteredPokemon();
     }
 });
-//------------------------------------------------------------------------------
+//--------------------------------------------------------------------------
+//Get pokemon från json fil
+let getPokemonJohto = fetch('http://localhost:3000/johto')
+    .then((response) => response.json())
+    .then((result) => {
+    console.log(result);
+    return result;
+});
 //# sourceMappingURL=main.js.map

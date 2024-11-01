@@ -101,6 +101,4 @@ async function getPokemon() {
     }
 }
 getPokemon();
-//--------------------------------------------------------------------------
-//Chart stats
 //# sourceMappingURL=detail.js.map
