@@ -75,10 +75,10 @@ async function getPokemon() {
     let pokemonHeight = document.getElementById('height');
     pokemonName.textContent = pokemon.name;
     pokemonImg.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemonId}.png`;
-    pokemonOrder.textContent = pokemon.id;
+    pokemonOrder.textContent = `#${pokemon.id}`;
     // Hämtar pokemon weight och height
-    pokemonWeight.innerHTML = pokemon.weight;
-    pokemonHeight.innerHTML = pokemon.height;
+    pokemonWeight.innerHTML = `${pokemon.weight}0g`;
+    pokemonHeight.innerHTML = `${pokemon.height}0cm`;
     // Extrahera pokemon types
     pokemonType = pokemon.types.map((type) => type.type.name);
     if (pokemonType.length === 1) {
@@ -101,4 +101,6 @@ async function getPokemon() {
     }
 }
 getPokemon();
+//--------------------------------------------------------------------------
+//Chart stats
 //# sourceMappingURL=detail.js.map

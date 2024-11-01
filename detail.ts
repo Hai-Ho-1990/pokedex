@@ -102,10 +102,10 @@ async function getPokemon() {
 
     pokemonName.textContent = pokemon.name;
     pokemonImg.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemonId}.png`;
-    pokemonOrder.textContent = pokemon.id;
+    pokemonOrder.textContent = `#${pokemon.id}`;
     // Hämtar pokemon weight och height
-    pokemonWeight.innerHTML = pokemon.weight;
-    pokemonHeight.innerHTML = pokemon.height;
+    pokemonWeight.innerHTML = `${pokemon.weight}0g`;
+    pokemonHeight.innerHTML = `${pokemon.height}0cm`;
 
     interface Type {
         type: {
@@ -136,3 +136,6 @@ async function getPokemon() {
 }
 
 getPokemon();
+
+//--------------------------------------------------------------------------
+//Chart stats

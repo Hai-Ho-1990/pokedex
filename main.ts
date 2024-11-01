@@ -87,7 +87,8 @@ async function displayPokemon() {
 
     let pokemonToDisplay = allPokemon.slice(start, end);
 
-    /* Vi har en lista av alla pokemon objekter. Loopa den listan för att ta ut varje pokemon och dess egenskaper */
+    //Vi har en lista av alla pokemon objekter. Loopa den listan för att ta ut
+    //varje pokemon och dess egenskaper
 
     pokemonToDisplay.forEach((pokemon: Pokemon) => {
         let imgSrc = pokemon.sprites.other['official-artwork'].front_default;
@@ -260,11 +261,3 @@ loadMore.addEventListener('click', () => {
 });
 
 //------------------------------------------------------------------------------
-
-//Get pokemon id
-
-/* // När man klickar på en specifik pokemon så hänvisar det till en annan html sidan.
-containerPokemon.addEventListener('click', function () {
-    window.location.href = `detail.html?id=${pokemonId}`;
-});
- */

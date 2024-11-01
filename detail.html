@@ -57,7 +57,10 @@
                 <div id="pokemon-wrapper">
                     <div id="head-wrapper">
                         <div class="name-wrapp">
-                            <h1 class="name"></h1>
+                            <h1
+                                class="name"
+                                style="font-size: 2rem; font-weight: bolder"
+                            ></h1>
                         </div>
                         <div class="id-wrapp">
                             <p class="order"></p>
@@ -75,22 +78,38 @@
                         /></a>
                     </div>
                     <div class="pokemon-detail-wrapper">
-                        <div class="pokemon-types">
-                            <p class="type" id="first"></p>
-                            <p class="type" id="second"></p>
-                        </div>
                         <p class="about-text">About</p>
-                        <div class="pokemon-info-wrapp"></div>
-                        <div class="pokemon-detail">
-                            <img src="./assets/weight.svg" alt="weight" />
-                            <p id="weight"></p>
-                            <p class="caption">Weight</p>
+                        <div class="pokemon-info-wrapp">
+                            <div class="pokemon-detail">
+                                <div class="pokemon-weight">
+                                    <img
+                                        src="./assets/weight.svg"
+                                        alt="weight"
+                                    />
+                                    <p id="weight"></p>
+                                </div>
+                                <p class="caption">Weight</p>
+                            </div>
+                            <div id="pokemon-detail">
+                                <div class="pokemon-weight">
+                                    <img
+                                        src="./assets/height.svg"
+                                        alt="height"
+                                    />
+                                    <p id="height"></p>
+                                </div>
+
+                                <p class="caption">Height</p>
+                            </div>
+                            <div class="pokemon-types">
+                                <p class="type" id="first"></p>
+                                <p class="type" id="second"></p>
+                                <p class="caption">Type</p>
+                            </div>
                         </div>
-                        <div id="pokemon-detail">
-                            <img src="./assets/height.svg" alt="height" />
-                            <p id="height"></p>
-                            <p class="caption">Height</p>
-                        </div>
+                    </div>
+                    <div>
+                        <canvas id="myChart"></canvas>
                     </div>
                 </div>
             </main>
@@ -164,5 +183,7 @@
             crossorigin="anonymous"
         ></script>
         <script type="module" src="detail.js"></script>
+        <script type="module" src="chart.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     </body>
 </html>
