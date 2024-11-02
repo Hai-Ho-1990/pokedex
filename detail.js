@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 let checkbox = document.querySelector('#red-mode-toggle');
 let header = document.querySelector('header');
 let navIcon = document.querySelector('.navbar-toggler-icon');
@@ -23,8 +23,7 @@ function changeStyleDetail() {
             whiteIcons[i].style.display = 'block';
             footerIcons[i].style.display = 'none';
         }
-    }
-    else if (!checkbox.checked) {
+    } else if (!checkbox.checked) {
         header.style.background = 'white';
         navCollapse.style.background = 'white';
         copyright.style.color = 'black';
@@ -42,7 +41,10 @@ function changeStyleDetail() {
 function setupCheckboxListener() {
     checkbox.addEventListener('click', function () {
         // Värde måste vara en sträng därför man ska konvertera statusen till sträng
-        localStorage.setItem('checkboxStatus', JSON.stringify(checkbox.checked));
+        localStorage.setItem(
+            'checkboxStatus',
+            JSON.stringify(checkbox.checked)
+        );
         changeStyleDetail();
     });
 }
@@ -62,7 +64,9 @@ async function getPokemon() {
     let pokemonId = new URLSearchParams(window.location.search).get('id');
     //Byta pokemonId från string till number så att kunna använda senare i back och forward
     let pokemonIdNumber = parseInt(pokemonId);
-    let response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonId}`);
+    let response = await fetch(
+        `https://pokeapi.co/api/v2/pokemon/${pokemonId}`
+    );
     let pokemon = await response.json();
     console.log(pokemon);
     let pokemonName = document.querySelector('.name-wrapp h1');
@@ -83,8 +87,7 @@ async function getPokemon() {
     pokemonType = pokemon.types.map((type) => type.type.name);
     if (pokemonType.length === 1) {
         pokemonType1.innerHTML = pokemonType.toString();
-    }
-    else {
+    } else {
         pokemonType1.innerHTML = pokemonType[0].toString();
         pokemonType2.innerHTML = pokemonType[1].toString();
     }
@@ -95,8 +98,7 @@ async function getPokemon() {
     rightArrow.href = `detail.html?id=${pokemonIdNumber + 1}`;
     if (pokemonIdNumber === 1) {
         leftArrow.style.display = 'none';
-    }
-    else {
+    } else {
         leftArrow.style.display = 'block';
     }
 }
