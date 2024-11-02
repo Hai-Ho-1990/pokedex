@@ -260,12 +260,3 @@ loadMore.addEventListener('click', () => {
         displayFilteredPokemon();
     }
 });
-
-//--------------------------------------------------------------------------
-//Get pokemon från json fil
-let getPokemonJohto = fetch('http://localhost:3000/johto')
-    .then((response) => response.json())
-    .then((result) => {
-        console.log(result);
-        return result;
-    });
