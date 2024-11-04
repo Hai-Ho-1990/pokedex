@@ -50,7 +50,7 @@ function changeStyleDetail() {
 }
 
 // Så fort användaren klickar så sparas checkboxen status och ändrar webbläsares bakgrundsfärg
-function setupCheckboxListener() {
+export function setupCheckboxListener() {
     checkbox.addEventListener('click', function () {
         // Värde måste vara en sträng därför man ska konvertera statusen till sträng
         localStorage.setItem(
@@ -69,16 +69,18 @@ if (saveCheckboxStatus) {
 }
 
 //-----------------------------------------------------
-//Extrahera varende pokemon value och returnera dom i html
-const pokemonApi = 'https://pokeapi.co/api/v2/pokemon?limit=151';
+
 // skapa ett URLSearchParams-objekt som innehåller alla parametrar från query-strängen i webbläsarens aktuella URL. Den här query-strängen börjar efter frågetecknet (?) i en URL.
 async function getPokemon() {
     //window.location.search är en del av URL som innehåller själva query-strängen, alltså allt efter ? i URL
-    let pokemonId: string = new URLSearchParams(window.location.search).get(
-        'id'
-    )!;
-    //Byta pokemonId från string till number så att kunna använda senare i back och forward
-    let pokemonIdNumber: number = parseInt(pokemonId);
+    //Konvertera pokemonId från string till number genom använda parseInt()
+    let pokemonId: number = parseInt(
+        new URLSearchParams(window.location.search).get('id')!
+    );
+    //Varje gång man lägga manuellt en ny pokemon måste öka begränsningar.
+    if (pokemonId > 153) {
+        pokemonId = 153;
+    }
 
     let response = await fetch(
         `https://pokeapi.co/api/v2/pokemon/${pokemonId}`
@@ -125,10 +127,10 @@ async function getPokemon() {
     let rightArrow = document.getElementById(
         'right-arrow'
     )! as HTMLAnchorElement;
-    leftArrow.href = `detail.html?id=${pokemonIdNumber - 1}`;
-    rightArrow.href = `detail.html?id=${pokemonIdNumber + 1}`;
+    leftArrow.href = `detail.html?id=${pokemonId - 1}`;
+    rightArrow.href = `detail.html?id=${pokemonId + 1}`;
 
-    if (pokemonIdNumber === 1) {
+    if (pokemonId === 1) {
         leftArrow.style.display = 'none';
     } else {
         leftArrow.style.display = 'block';

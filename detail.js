@@ -1,4 +1,3 @@
-'use strict';
 let checkbox = document.querySelector('#red-mode-toggle');
 let header = document.querySelector('header');
 let navIcon = document.querySelector('.navbar-toggler-icon');
@@ -23,7 +22,8 @@ function changeStyleDetail() {
             whiteIcons[i].style.display = 'block';
             footerIcons[i].style.display = 'none';
         }
-    } else if (!checkbox.checked) {
+    }
+    else if (!checkbox.checked) {
         header.style.background = 'white';
         navCollapse.style.background = 'white';
         copyright.style.color = 'black';
@@ -38,13 +38,10 @@ function changeStyleDetail() {
     }
 }
 // Så fort användaren klickar så sparas checkboxen status och ändrar webbläsares bakgrundsfärg
-function setupCheckboxListener() {
+export function setupCheckboxListener() {
     checkbox.addEventListener('click', function () {
         // Värde måste vara en sträng därför man ska konvertera statusen till sträng
-        localStorage.setItem(
-            'checkboxStatus',
-            JSON.stringify(checkbox.checked)
-        );
+        localStorage.setItem('checkboxStatus', JSON.stringify(checkbox.checked));
         changeStyleDetail();
     });
 }
@@ -56,17 +53,16 @@ if (saveCheckboxStatus) {
     changeStyleDetail();
 }
 //-----------------------------------------------------
-//Extrahera varende pokemon value och returnera dom i html
-const pokemonApi = 'https://pokeapi.co/api/v2/pokemon?limit=151';
 // skapa ett URLSearchParams-objekt som innehåller alla parametrar från query-strängen i webbläsarens aktuella URL. Den här query-strängen börjar efter frågetecknet (?) i en URL.
 async function getPokemon() {
     //window.location.search är en del av URL som innehåller själva query-strängen, alltså allt efter ? i URL
-    let pokemonId = new URLSearchParams(window.location.search).get('id');
-    //Byta pokemonId från string till number så att kunna använda senare i back och forward
-    let pokemonIdNumber = parseInt(pokemonId);
-    let response = await fetch(
-        `https://pokeapi.co/api/v2/pokemon/${pokemonId}`
-    );
+    //Konvertera pokemonId från string till number genom använda parseInt()
+    let pokemonId = parseInt(new URLSearchParams(window.location.search).get('id'));
+    //Varje gång man lägga manuellt en ny pokemon måste öka begränsningar.
+    if (pokemonId > 153) {
+        pokemonId = 153;
+    }
+    let response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonId}`);
     let pokemon = await response.json();
     console.log(pokemon);
     let pokemonName = document.querySelector('.name-wrapp h1');
@@ -87,18 +83,20 @@ async function getPokemon() {
     pokemonType = pokemon.types.map((type) => type.type.name);
     if (pokemonType.length === 1) {
         pokemonType1.innerHTML = pokemonType.toString();
-    } else {
+    }
+    else {
         pokemonType1.innerHTML = pokemonType[0].toString();
         pokemonType2.innerHTML = pokemonType[1].toString();
     }
     // Back och forward
     let leftArrow = document.getElementById('left-arrow');
     let rightArrow = document.getElementById('right-arrow');
-    leftArrow.href = `detail.html?id=${pokemonIdNumber - 1}`;
-    rightArrow.href = `detail.html?id=${pokemonIdNumber + 1}`;
-    if (pokemonIdNumber === 1) {
+    leftArrow.href = `detail.html?id=${pokemonId - 1}`;
+    rightArrow.href = `detail.html?id=${pokemonId + 1}`;
+    if (pokemonId === 1) {
         leftArrow.style.display = 'none';
-    } else {
+    }
+    else {
         leftArrow.style.display = 'block';
     }
 }
