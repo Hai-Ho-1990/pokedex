@@ -28,7 +28,7 @@ async function getPokemonJohto() {
 }
 
 // POST pokemon
-/* async function postPokemonJohto(newPokemon: any) {
+async function postPokemonJohto(newPokemon: any) {
     try {
         let response = await fetch('http://localhost:3000/johto', {
             method: 'POST',
@@ -45,17 +45,23 @@ async function getPokemonJohto() {
     }
 }
 
-// Kontrollera och lägg till Pokémon om den inte redan finns
-getPokemonJohto().then((johtoPokemons) => {
-    // vi får tillbaka en listan av pokemon
-    if (!johtoPokemons.some((pokemon: any) => pokemon.id === newPokemon.id)) {
-        postPokemonJohto(newPokemon);
-    } else {
-        console.log('pokemon finns redan i listan');
-    }
-}); */
+let addPokemon = document.getElementById('addPokemon')!;
+addPokemon.addEventListener('click', () => {
+    // Kontrollera och lägg till Pokémon om den inte redan finns
+    getPokemonJohto().then((johtoPokemons) => {
+        // vi får tillbaka en listan av pokemon
+        if (
+            !johtoPokemons.some((pokemon: any) => pokemon.id === newPokemon.id)
+        ) {
+            postPokemonJohto(newPokemon);
+        } else {
+            console.log('pokemon finns redan i listan');
+        }
+    });
+});
 
 // DELETE en pokemon
+let deleteBtn = document.getElementById('deletePokemon')!;
 async function deletePokemonJohto() {
     try {
         let response = await fetch('http://localhost:3000/johto/3', {
@@ -66,13 +72,17 @@ async function deletePokemonJohto() {
     }
 }
 
-//Kontrollera om pokemon jag vill ta bort har samma id som pokemon i listan
-getPokemonJohto().then((johtoPokemons) => {
-    if (johtoPokemons.some((pokemon: any) => pokemon.id === newPokemon.id)) {
-        deletePokemonJohto();
-    } else {
-        console.log('Denna pokemon finns inte i listan.');
-    }
+deleteBtn.addEventListener('click', () => {
+    //Kontrollera om pokemon jag vill ta bort har samma id som pokemon i listan
+    getPokemonJohto().then((johtoPokemons) => {
+        if (
+            johtoPokemons.some((pokemon: any) => pokemon.id === newPokemon.id)
+        ) {
+            deletePokemonJohto();
+        } else {
+            console.log('Denna pokemon finns inte i listan.');
+        }
+    });
 });
 
 //------------------------------------------------------------------------------

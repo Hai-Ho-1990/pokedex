@@ -135,6 +135,64 @@ async function getPokemon() {
     } else {
         leftArrow.style.display = 'block';
     }
+    return pokemon;
 }
 
 getPokemon();
+
+//------------------------------------------------------------------------------
+//Ändra bakgrundsfärg beroende på pokemon typ
+let topBackground = document.querySelector('#pokemon-wrapper')!;
+
+async function changeBackgroundPokemon() {
+    let pokemon = await getPokemon();
+    let pokemonTypes: string[] = [];
+
+    interface Type {
+        type: {
+            name: string;
+        };
+    }
+
+    // Hämta Pokémon-typer
+    pokemonTypes = pokemon.types.map((type: Type) => type.type.name);
+
+    // Mappning av Pokémon-typer till klassnamn
+    let typeBackgroundMap: { [key: string]: string } = {
+        grass: 'grass-background',
+        fire: 'fire-background',
+        water: 'water-background',
+        normal: 'normal-background',
+        bug: 'bug-background',
+        electric: 'electric-background',
+        psychic: 'psychic-background',
+        fairy: 'fairy-background',
+        dark: 'dark-background',
+        ghost: 'ghost-background',
+        poison: 'poison-background',
+        rock: 'rock-background',
+        ground: 'ground-background',
+        steel: 'steel-background',
+        ice: 'ice-background',
+        fighting: 'fighting-background',
+        dragon: 'dragon-background',
+        flying: 'flying-background'
+    };
+
+    // Ta bort tidigare typer
+    topBackground.className = ''; // Rensa tidigare klassnamn
+
+    // Hämta första typen och lägg till den motsvarande bakgrundsklassen
+    let primaryType = pokemonTypes[0];
+    let backgroundClass = typeBackgroundMap[primaryType];
+    //Om backgroundClass finns, lägg till den med dess egenskaper
+    if (backgroundClass) {
+        topBackground.classList.add(backgroundClass);
+    }
+}
+
+// Anropa funktionen för att ändra bakgrunden
+changeBackgroundPokemon();
+
+//------------------------------------------------------------------------------
+//Hämta typer som icons och visa upp dom på sidan.
