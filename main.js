@@ -24,6 +24,7 @@ fetchPokemonApi();
 async function getPokemonUrl() {
     let response = await fetchPokemonApi();
     let pokemonUrl = response.map((pokemon) => pokemon.url);
+    console.log(pokemonUrl);
     return pokemonUrl;
 }
 getPokemonUrl();

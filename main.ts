@@ -34,7 +34,7 @@ async function getPokemonUrl() {
         url: string;
     }
     let pokemonUrl = response.map((pokemon: Pokemon) => pokemon.url);
-
+    console.log(pokemonUrl);
     return pokemonUrl;
 }
 

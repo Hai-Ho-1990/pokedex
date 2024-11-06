@@ -87,18 +87,19 @@ async function getPokemon() {
     );
 
     let pokemon = await response.json();
-    console.log(pokemon);
 
     let pokemonName = document.querySelector('.name-wrapp h1')!;
     let pokemonOrder = document.querySelector('.order')!;
     let pokemonImg = document.querySelector(
         '.pokemon-image img'
     )! as HTMLImageElement;
+
+    let pokemonType1 = document.querySelector('#first')! as HTMLElement;
+    let pokemonType2 = document.querySelector('#second')!;
     let pokemonType = document.querySelectorAll(
         '.type'
     )! as NodeListOf<HTMLElement>;
-    let pokemonType1 = document.querySelector('#first')! as HTMLElement;
-    let pokemonType2 = document.querySelector('#second')!;
+
     let pokemonWeight = document.getElementById('weight')!;
     let pokemonHeight = document.getElementById('height')!;
 
@@ -109,19 +110,44 @@ async function getPokemon() {
     pokemonWeight.innerHTML = `${pokemon.weight}0g`;
     pokemonHeight.innerHTML = `${pokemon.height}0cm`;
 
-    interface Type {
-        type: {
-            name: string;
-        };
+    /*  */
+    let pokemonTypeUrl = pokemon.types.map((type: any) => type.type.url);
+
+    async function fetchPokemonType() {
+        try {
+            // Skapar en array av `fetch`-anrop för varje URL
+            // Eftersom vi har massa av type API så vi måste loopar varenda url
+            let promises = pokemonTypeUrl.map((url: any) =>
+                fetch(url).then((response) => {
+                    if (!response.ok) throw new Error('Kunde inte fetcha.');
+                    return response.json();
+                })
+            );
+            //Pormise.all() behövs när man jobbar med flera asynkrona operationer som kan köras parallellt
+            let data = await Promise.all(promises);
+            console.log(data);
+
+            data.forEach((pokemonType, index) => {
+                //?. kontrollerar om sprites, ['generation-viii'] & ['legends-arceus']
+                //finns eller inte.
+                let typeImg =
+                    pokemonType.sprites?.['generation-viii']?.['legends-arceus']
+                        ?.name_icon;
+                if (typeImg) {
+                    console.log(data.length);
+                }
+                if (index === 0) {
+                    pokemonType1.innerHTML = `<img src="${typeImg}" class="type" alt="...">`;
+                } else if (index === 1) {
+                    pokemonType2.innerHTML = `<img src="${typeImg}" class="type" alt="...">`;
+                }
+            });
+        } catch (error) {
+            console.error(error);
+        }
     }
-    // Extrahera pokemon types
-    pokemonType = pokemon.types.map((type: Type) => type.type.name);
-    if (pokemonType.length === 1) {
-        pokemonType1.innerHTML = pokemonType.toString();
-    } else {
-        pokemonType1.innerHTML = pokemonType[0].toString();
-        pokemonType2.innerHTML = pokemonType[1].toString();
-    }
+    fetchPokemonType();
+
     // Back och forward
     let leftArrow = document.getElementById('left-arrow')! as HTMLAnchorElement;
     let rightArrow = document.getElementById(
@@ -144,6 +170,28 @@ getPokemon();
 //Ändra bakgrundsfärg beroende på pokemon typ
 let topBackground = document.querySelector('#pokemon-wrapper')!;
 
+// Mappning av Pokémon-typer till klassnamn
+let typeBackgroundMap: { [key: string]: string } = {
+    grass: 'grass-background',
+    fire: 'fire-background',
+    water: 'water-background',
+    normal: 'normal-background',
+    bug: 'bug-background',
+    electric: 'electric-background',
+    psychic: 'psychic-background',
+    fairy: 'fairy-background',
+    dark: 'dark-background',
+    ghost: 'ghost-background',
+    poison: 'poison-background',
+    rock: 'rock-background',
+    ground: 'ground-background',
+    steel: 'steel-background',
+    ice: 'ice-background',
+    fighting: 'fighting-background',
+    dragon: 'dragon-background',
+    flying: 'flying-background'
+};
+
 async function changeBackgroundPokemon() {
     let pokemon = await getPokemon();
     let pokemonTypes: string[] = [];
@@ -156,28 +204,6 @@ async function changeBackgroundPokemon() {
 
     // Hämta Pokémon-typer
     pokemonTypes = pokemon.types.map((type: Type) => type.type.name);
-
-    // Mappning av Pokémon-typer till klassnamn
-    let typeBackgroundMap: { [key: string]: string } = {
-        grass: 'grass-background',
-        fire: 'fire-background',
-        water: 'water-background',
-        normal: 'normal-background',
-        bug: 'bug-background',
-        electric: 'electric-background',
-        psychic: 'psychic-background',
-        fairy: 'fairy-background',
-        dark: 'dark-background',
-        ghost: 'ghost-background',
-        poison: 'poison-background',
-        rock: 'rock-background',
-        ground: 'ground-background',
-        steel: 'steel-background',
-        ice: 'ice-background',
-        fighting: 'fighting-background',
-        dragon: 'dragon-background',
-        flying: 'flying-background'
-    };
 
     // Ta bort tidigare typer
     topBackground.className = ''; // Rensa tidigare klassnamn
@@ -193,6 +219,3 @@ async function changeBackgroundPokemon() {
 
 // Anropa funktionen för att ändra bakgrunden
 changeBackgroundPokemon();
-
-//------------------------------------------------------------------------------
-//Hämta typer som icons och visa upp dom på sidan.
