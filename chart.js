@@ -51,6 +51,13 @@ async function getPokemonStats() {
         type: 'radar',
         data: data,
         options: {
+            responsive: true, // Gör diagrammet responsivt
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    display: false // Döljer legenden
+                }
+            },
             elements: {
                 line: {
                     borderWidth: 3
@@ -61,8 +68,13 @@ async function getPokemonStats() {
                     angleLines: {
                         display: false
                     },
-                    suggestedMin: 0,
-                    suggestedMax: 150
+                    suggestedMin: 20,
+                    suggestedMax: 150,
+                    pointLabels: {
+                        font: {
+                            size: 18
+                        }
+                    }
                 }
             }
         }

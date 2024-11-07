@@ -26,7 +26,7 @@ label::after {
   position: absolute;
   top: 2px;
   left: 2px;
-  background-color: #d91604;
+  background-color: #a92d22;
   border-radius: 40px;
   -webkit-box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
           box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
@@ -40,7 +40,7 @@ input {
 }
 
 input:checked + label {
-  background-color: #d91604;
+  background-color: #a92d22;
 }
 
 input:checked + label:after {
@@ -108,6 +108,7 @@ header {
   -webkit-transition: 0.3s;
   transition: 0.3s;
   z-index: -1;
+  overflow: hidden;
 }
 
 #pokeball {
@@ -166,7 +167,7 @@ footer {
 }
 
 .grass-background::before {
-  background-color: #4fc64f;
+  background-color: #5da95d;
 }
 
 .fire-background::before {
@@ -244,11 +245,23 @@ footer {
 
 body {
   background-color: #f1eeee !important;
+  width: 100%;
 }
 
 #pokemon-wrapper {
   position: relative;
-  height: 100vh;
+  height: 100%;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 #pokemon-wrapper::before {
@@ -258,6 +271,7 @@ body {
   left: 0;
   width: 100%;
   height: 30%;
+  margin-top: 15px;
   z-index: 0;
   border-radius: 15px;
 }
@@ -280,6 +294,7 @@ body {
 #myChart {
   z-index: 1;
   position: relative;
+  width: 100%;
 }
 
 #head-wrapper {
@@ -290,25 +305,29 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  margin-top: 40px;
+  margin-top: 20px;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: start;
 }
 
-.name-wrap .name {
+.name-wrapp > h1 {
+  font-size: 1.5rem;
+  padding-left: 10px;
+  padding-top: 10px;
+  color: white;
   font-family: "Poppins", sans-serif;
-  font-size: 2rem;
 }
 
 .id-wrapp .order {
   font-family: "Poppins", sans-serif;
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   padding-right: 20px;
   color: white;
-  padding-top: 12px;
+  padding-top: 8px;
 }
 
 .pokemon-image img {
@@ -324,6 +343,9 @@ body {
       -ms-flex-direction: row;
           flex-direction: row;
   text-align: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 #right-arrow,
@@ -379,7 +401,9 @@ body {
 .about-text {
   font-family: "Poppins", sans-serif;
   font-weight: 600;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
+  margin-bottom: 40px;
+  margin-top: 20px;
 }
 
 .caption {
@@ -400,4 +424,58 @@ body {
 
 .type {
   width: 10vh;
+}
+
+#myChart {
+  margin-top: 40px;
+}
+
+@media (min-width: 765px) and (max-width: 912px) {
+  .navbar-toggler {
+    padding-left: 7% !important;
+  }
+  .navbar-toggler-icon {
+    width: 40px !important;
+  }
+  .red-mode {
+    margin-top: 5px;
+    -webkit-transform: scaleX(1.5) scaleY(1.5);
+            transform: scaleX(1.5) scaleY(1.5);
+  }
+  .navbar-nav a {
+    margin-top: 2.5%;
+    margin-left: 6%;
+  }
+  #pokemon-wrapper::before {
+    height: 34%;
+    -webkit-transform: scaleX(0.85);
+            transform: scaleX(0.85);
+  }
+  #pokemon-wrapper::after {
+    -webkit-transform: scaleX(0.85);
+            transform: scaleX(0.85);
+  }
+  #head-wrapper {
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+    width: 100%;
+  }
+  .name-wrapp > h1 {
+    font-size: 2.5rem;
+    padding-right: 19vh;
+  }
+  .id-wrapp .order {
+    font-size: 2rem;
+  }
+  .pokemon-detail-wrapper {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+  #myChart {
+    width: 450px;
+    padding-bottom: 30px;
+  }
+  footer {
+    margin-top: 20px;
+  }
 }

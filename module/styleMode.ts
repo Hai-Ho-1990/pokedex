@@ -23,13 +23,13 @@ let copyright = document.querySelector('p')!;
 
 function changeStyle() {
     if (checkbox.checked) {
-        header.style.background = '#C61700';
+        header.style.background = '#A92D22';
         heading.style.color = 'white';
         navIcon.style.color = 'white';
-        navCollapse.style.setProperty('background', '#C61700', 'important');
+        navCollapse.style.setProperty('background', '#A92D22', 'important');
 
         copyright.style.color = 'white';
-        footer.style.background = '#C61700';
+        footer.style.background = '#A92D22';
         for (let i = 0; i < navLink.length; i++) {
             navLink[i].style.setProperty('color', 'white', 'important');
         }

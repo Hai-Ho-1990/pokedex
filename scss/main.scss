@@ -35,7 +35,7 @@ label::after {
     position: absolute;
     top: 2px;
     left: 2px;
-    background-color: #d91604;
+    background-color: #a92d22;
     border-radius: 40px;
     box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
     display: block;
@@ -48,7 +48,7 @@ input {
     visibility: none;
 }
 input:checked + label {
-    background-color: #d91604;
+    background-color: #a92d22;
 }
 
 input:checked + label:after {

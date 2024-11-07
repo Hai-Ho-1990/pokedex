@@ -2,7 +2,7 @@ let newPokemon = {
     id: '3',
     name: 'Meganium',
     order: 154,
-    image: 'https://archives.bulbagarden.net/media/upload/8/8b/0154Meganium.png',
+    image: './assets/Meganium.png',
     types: [{ type: { name: 'grass' } }],
     weight: 1050,
     height: 180,

@@ -10,11 +10,11 @@ let copyright = document.querySelector('.footer-container > p ');
 //Skapar först stilar för header när användare bockar av knappen.
 function changeStyleDetail() {
     if (checkbox.checked) {
-        header.style.background = '#C61700';
+        header.style.background = '#A92D22';
         navIcon.style.color = 'white';
-        navCollapse.style.setProperty('background', '#C61700', 'important');
+        navCollapse.style.setProperty('background', '#A92D22', 'important');
         copyright.style.color = 'white';
-        footer.style.background = '#C61700';
+        footer.style.background = '#A92D22';
         for (let i = 0; i < navLink.length; i++) {
             navLink[i].style.setProperty('color', 'white', 'important');
         }
@@ -130,7 +130,7 @@ getPokemon();
 //------------------------------------------------------------------------------
 //Ändra bakgrundsfärg beroende på pokemon typ
 let topBackground = document.querySelector('#pokemon-wrapper');
-// Mappning av Pokémon-typer till klassnamn
+// Skapar en mapp för alla pokemon typer och dess klassaer.
 let typeBackgroundMap = {
     grass: 'grass-background',
     fire: 'fire-background',
@@ -160,6 +160,7 @@ async function changeBackgroundPokemon() {
     topBackground.className = ''; // Rensa tidigare klassnamn
     // Hämta första typen och lägg till den motsvarande bakgrundsklassen
     let primaryType = pokemonTypes[0];
+    // Tex: typesBackgroundMap[grass]
     let backgroundClass = typeBackgroundMap[primaryType];
     //Om backgroundClass finns, lägg till den med dess egenskaper
     if (backgroundClass) {
