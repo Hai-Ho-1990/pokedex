@@ -78,8 +78,8 @@ async function getPokemon() {
         new URLSearchParams(window.location.search).get('id')!
     );
     //Varje gång man lägga manuellt en ny pokemon måste öka begränsningar.
-    if (pokemonId > 153) {
-        pokemonId = 153;
+    if (pokemonId > 154) {
+        pokemonId = 154;
     }
 
     let response = await fetch(

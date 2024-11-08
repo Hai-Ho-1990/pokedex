@@ -81,6 +81,47 @@
           "base_stat": 60
         }
       ]
+    },
+    {
+      "id": "3",
+      "name": "Meganium",
+      "order": 154,
+      "image": "./assets/Meganium.png",
+      "types": [
+        {
+          "type": {
+            "name": "grass"
+          }
+        }
+      ],
+      "weight": 1050,
+      "height": 180,
+      "stats": [
+        {
+          "name": "Hp",
+          "base_stat": 80
+        },
+        {
+          "name": "Atk",
+          "base_stat": 82
+        },
+        {
+          "name": "Defense",
+          "base_stat": 100
+        },
+        {
+          "name": "SpAtk",
+          "base_stat": 83
+        },
+        {
+          "name": "SpDef",
+          "base_stat": 100
+        },
+        {
+          "name": "Speed",
+          "base_stat": 80
+        }
+      ]
     }
   ]
 }
