@@ -183,6 +183,7 @@ main > h1 {
     flex-wrap: wrap;
     flex-direction: row;
     justify-content: space-evenly;
+    width: 100%;
 }
 
 .card {
@@ -277,4 +278,71 @@ footer {
     font-family: 'Poppins', sans-serif;
     font-size: 0.5rem;
     opacity: 70%;
+}
+
+//Media queries
+@media (min-width: 768px) {
+    .pokemon-container {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 16px;
+        width: 100%;
+    }
+
+    .card {
+        background-color: #d9d9d9 !important;
+        border: none !important;
+        cursor: pointer;
+        height: 8rem !important;
+        width: 8rem;
+    }
+    .card-body h5 {
+        bottom: 10px;
+    }
+    .card-body h6 {
+        left: 80px;
+    }
+    .card-img-top {
+        width: 5rem !important;
+    }
+}
+
+@media (min-width: 992px) {
+    header {
+        height: 25em;
+        position: relative;
+        z-index: 0;
+    }
+    .navbar-collapse {
+        flex-grow: 0 !important;
+        height: 100%;
+        z-index: 2;
+    }
+    #pokeball {
+        width: 30%;
+    }
+    .navbar {
+        width: 100%;
+    }
+    .container-fluid {
+        width: auto !important;
+    }
+    .navbar-nav a {
+        font-size: 1.2rem;
+        margin-top: 0;
+        z-index: 1;
+    }
+    .nav-link {
+        padding: 0 40px 0 40px !important;
+        position: relative;
+    }
+    .red-mode {
+        transform: scaleX(2) scaleY(1.8);
+        position: absolute;
+        top: 20px;
+        left: 30px;
+        z-index: 1;
+    }
+
+    //Justering fieldset
 }

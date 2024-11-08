@@ -51,7 +51,7 @@ async function getPokemonStats() {
         type: 'radar',
         data: data,
         options: {
-            responsive: true, // Gör diagrammet responsivt
+            responsive: true,
             maintainAspectRatio: false,
             plugins: {
                 legend: {

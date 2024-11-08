@@ -12,7 +12,7 @@ function changeStyleDetail() {
     if (checkbox.checked) {
         header.style.background = '#A92D22';
         navIcon.style.color = 'white';
-        navCollapse.style.setProperty('background', '#A92D22', 'important');
+        navCollapse.style.setProperty('background', 'transparent', 'important');
         copyright.style.color = 'white';
         footer.style.background = '#A92D22';
         for (let i = 0; i < navLink.length; i++) {
@@ -25,7 +25,7 @@ function changeStyleDetail() {
     }
     else if (!checkbox.checked) {
         header.style.background = 'white';
-        navCollapse.style.background = 'white';
+        navCollapse.style.setProperty('background', 'transparent', 'important');
         copyright.style.color = 'black';
         footer.style.background = 'white';
         for (let i = 0; i < navLink.length; i++) {
@@ -130,6 +130,7 @@ getPokemon();
 //------------------------------------------------------------------------------
 //Ändra bakgrundsfärg beroende på pokemon typ
 let topBackground = document.querySelector('#pokemon-wrapper');
+let body = document.querySelector('body');
 // Skapar en mapp för alla pokemon typer och dess klassaer.
 let typeBackgroundMap = {
     grass: 'grass-background',
