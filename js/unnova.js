@@ -1,4 +1,4 @@
-const pokemonApi = 'https://pokeapi.co/api/v2/pokemon?limit=151';
+const pokemonApi = 'https://pokeapi.co/api/v2/pokemon?offset=493&limit=156';
 // Hämtar DOM
 let containerPokemon = document.querySelector('.pokemon-container');
 let loadMore = document.querySelector('.btn-danger');
@@ -91,7 +91,7 @@ loadMore.addEventListener('click', () => {
 });
 //------------------------------------------------------------------------------
 //Ändra & spara header & footer bakgrund färg när användare bockar av checkbox
-import { changeStyle, setupCheckboxListener } from './module/styleMode.js';
+import { changeStyle, setupCheckboxListener } from '../module/styleMode.js';
 changeStyle();
 setupCheckboxListener();
 //------------------------------------------------------------------------------
@@ -149,4 +149,4 @@ function displayFilteredPokemon() {
         </div></div>`;
     });
 }
-//# sourceMappingURL=main.js.map
+//# sourceMappingURL=unnova.js.map

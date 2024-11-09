@@ -1,14 +1,13 @@
-const pokemonApi = 'https://pokeapi.co/api/v2/pokemon?limit=151';
-
+const pokemonHoenn = 'https://pokeapi.co/api/v2/pokemon?offset=251&limit=135';
 // Hämtar DOM
-let containerPokemon = document.querySelector('.pokemon-container')!;
+let containerPokemonHoenn = document.querySelector('.pokemon-container')!;
 let loadMore = document.querySelector('.btn-danger')! as HTMLElement;
-let filteredPokemon: any[] = [];
+let filteredPokemonHoenn: any[] = [];
 
 // Fetch Url och hämta url för 151 pokemon i json objekt
 async function fetchPokemonApi() {
     try {
-        let response = await fetch(pokemonApi);
+        let response = await fetch(pokemonHoenn);
         if (!response.ok) {
             throw new Error(
                 'Nätverksresponsen var inte okej: ' + response.status
@@ -16,10 +15,10 @@ async function fetchPokemonApi() {
         }
 
         let data = await response.json();
-        let result = data.results;
+        let pokemonEntries = data.results;
 
-        console.log(result);
-        return result;
+        console.log(pokemonEntries);
+        return pokemonEntries;
     } catch (error) {
         console.error('Det gick inte att hämta data', error);
     }
@@ -100,7 +99,7 @@ async function displayPokemon() {
         let order = pokemon.id;
 
         //Skapar en card för varje pokemon och visa upp den på webbläsare
-        containerPokemon.innerHTML += `<div class="col-md-4">
+        containerPokemonHoenn.innerHTML += `<div class="col-md-4">
         <a href="detail.html?id=${order}" style="text-decoration:none" >
         <div class="card" >
         <img src="${imgSrc}" class="card-img-top" alt="...">
@@ -131,7 +130,7 @@ loadMore.addEventListener('click', () => {
 //------------------------------------------------------------------------------
 
 //Ändra & spara header & footer bakgrund färg när användare bockar av checkbox
-import { changeStyle, setupCheckboxListener } from './module/styleMode.js';
+import { changeStyle, setupCheckboxListener } from '../module/styleMode.js';
 
 changeStyle();
 setupCheckboxListener();
@@ -145,13 +144,13 @@ let pokedexText = document.querySelector('main h1')! as HTMLElement;
 inputElement.addEventListener('input', function (event) {
     let input = (event.target as HTMLInputElement).value.toLowerCase(); //
 
-    filteredPokemon = allPokemon.filter((pokemon) =>
+    filteredPokemonHoenn = allPokemon.filter((pokemon) =>
         pokemon.name.toLowerCase().includes(input)
     );
-    containerPokemon.innerHTML = '';
+    containerPokemonHoenn.innerHTML = '';
 
     //Om det finns inga pokemon att visa ska fel meddelande visas upp.
-    if (filteredPokemon.length === 0) {
+    if (filteredPokemonHoenn.length === 0) {
         message.style.display = 'block';
         loadMore.style.display = 'none';
         pokedexText.style.display = 'none';
@@ -172,9 +171,9 @@ function displayFilteredPokemon() {
     // Sista index
     let end = currentPage * pokemonPerPage;
     //Visa endast 12 pokemon på sidan
-    let pokemonToDisplay = filteredPokemon.slice(start, end);
+    let pokemonToDisplay = filteredPokemonHoenn.slice(start, end);
 
-    if (end >= filteredPokemon.length) {
+    if (end >= filteredPokemonHoenn.length) {
         loadMore.style.display = 'none';
     } else {
         loadMore.style.display = 'block';
@@ -187,7 +186,7 @@ function displayFilteredPokemon() {
         let pokemonName = pokemon.name;
         let order = pokemon.id;
         //Skapar en card för varje pokemon och visa upp den på webbläsare
-        containerPokemon.innerHTML += `<div class="col-md-4">
+        containerPokemonHoenn.innerHTML += `<div class="col-md-4">
         <a href="detail.html?id=${order}" style="text-decoration:none" > <div class="card" >
         <img src="${imgSrc}" class="card-img-top" alt="...">
         <div class="card-body">
