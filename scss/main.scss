@@ -8,6 +8,11 @@ body {
     background-color: #f1eeee !important;
 }
 
+main {
+    overflow: auto;
+    height: 100vh;
+}
+
 //Skapa red mode button
 .red-mode {
     display: inline;
@@ -27,7 +32,6 @@ label {
     position: relative;
     display: block;
 }
-
 label::after {
     content: '';
     width: 11px;
@@ -42,7 +46,7 @@ label::after {
 }
 
 input {
-    //Göm checkbox knapp
+    //dölj checkbox knapp
     width: 0;
     height: 0;
     visibility: none;
@@ -50,7 +54,6 @@ input {
 input:checked + label {
     background-color: #a92d22;
 }
-
 input:checked + label:after {
     transform: translateX(-100%);
     left: 28px;
@@ -64,19 +67,15 @@ input:checked + label:after {
     position: absolute;
     bottom: 250px;
 }
-
 .bg-body-tertiary {
     --bs-bg-opacity: none !important;
 }
-
 .navbar-toggler:focus {
     box-shadow: none !important;
 }
-
 .navbar-toggler {
     border: none !important;
 }
-
 .navbar-nav a {
     color: black;
     font-family: 'Poppins', sans-serif;
@@ -87,20 +86,9 @@ input:checked + label:after {
 .nav-link {
     position: relative;
 }
-/* .nav-link:after {
-    content: '';
-    height: 1px;
-    width: 107%;
-    background: rgb(216, 216, 216);
-    position: absolute;
-    bottom: 0;
-    left: -12px;
-} */
-
 .navbar-toggler {
     padding-left: 0 !important;
 }
-
 .navbar-collapse {
     background-color: white !important;
     height: 27vh;
@@ -115,7 +103,6 @@ header {
     transition: 0.3s;
     z-index: -1;
 }
-
 #pokeball {
     width: 250px;
     opacity: 10%;
@@ -132,7 +119,6 @@ fieldset {
     top: 22%;
     width: 100%;
 }
-
 fieldset > h1 {
     font-family: 'Poppins', sans-serif;
     font-weight: bold;
@@ -140,7 +126,6 @@ fieldset > h1 {
     position: relative;
     left: 10%;
 }
-
 #search {
     position: relative;
     left: 7%;
@@ -152,22 +137,18 @@ fieldset > h1 {
     background-color: #eeeeee;
     border: none;
 }
-
 #search:focus {
     outline: none;
 }
-
 #search-icon {
     position: absolute;
     margin-top: 1%;
     right: 15%;
-
     z-index: 1;
 }
 
-/* Main börjar här */
+// Main börjar här
 //Justering innehåll
-
 main > h1 {
     font-family: 'Poppins', sans-serif;
     font-weight: bold;
@@ -177,15 +158,14 @@ main > h1 {
     margin-top: 20px;
     margin-bottom: 20px;
 }
-
 .pokemon-container {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
     justify-content: space-evenly;
     width: 100%;
+    margin-top: 40px;
 }
-
 .card {
     margin-bottom: 12px;
     width: 7rem;
@@ -194,7 +174,6 @@ main > h1 {
     border: none !important;
     cursor: pointer;
 }
-
 .card-body h5 {
     font-size: 0.7rem;
     text-align: center;
@@ -208,7 +187,6 @@ main > h1 {
     bottom: 82px;
     left: 70px;
 }
-
 .card-img-top {
     width: 4.5rem !important;
     align-self: center;
@@ -225,11 +203,9 @@ main {
     align-self: center;
     margin-top: 40px;
 }
-
 .message {
     align-content: center;
 }
-
 .message h2 {
     font-family: 'Poppins', sans-serif;
     margin: 0;
@@ -238,6 +214,13 @@ main {
     font-size: 1.5rem;
     opacity: 60%;
 }
+.method-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    top: 10%;
+}
 
 /* Footer */
 footer {
@@ -245,32 +228,28 @@ footer {
     height: 17vh;
     border-radius: 15px 15px 0 0;
     margin-top: 40px;
+    position: sticky;
 }
-
 .footer-container {
     position: relative;
     top: 55px;
 }
-
 .footer-icon {
     width: 27px;
     padding-right: 5px;
     opacity: 70%;
 }
-
 .footer-icon-white {
     width: 27px;
     padding-right: 5px;
     opacity: 70%;
 }
-
 .icons {
     display: flex;
     justify-content: center;
     position: relative;
     top: 30px;
 }
-
 .footer-container > p {
     position: relative;
     top: 40px;
@@ -288,7 +267,6 @@ footer {
         gap: 16px;
         width: 100%;
     }
-
     .card {
         background-color: #d9d9d9 !important;
         border: none !important;
@@ -306,7 +284,6 @@ footer {
         width: 5rem !important;
     }
 }
-
 @media (min-width: 992px) {
     header {
         height: 25em;
@@ -359,6 +336,10 @@ footer {
     .card {
         width: 11rem;
         height: 11rem !important;
+        transition: transform 0.2s ease-in-out;
+    }
+    .card:hover {
+        transform: translateY(-10px);
     }
     .card-img-top {
         width: 7rem !important;
@@ -373,6 +354,16 @@ footer {
         font-size: 1rem;
         bottom: 10px;
     }
+
+    //Add btn
+    .method-btn {
+        flex-direction: row;
+        align-self: center;
+        padding-left: 50px;
+    }
+    #addPokemon {
+        margin-right: 50px;
+    }
 }
 @media (min-width: 1050px) {
     .navbar-collapse {
@@ -385,14 +376,31 @@ footer {
         top: -30px;
         right: 150px;
     }
+    .card {
+        width: 12rem;
+    }
+    .card-body h6 {
+        left: 125px;
+        bottom: 116px;
+    }
 }
 @media (min-width: 1200px) {
     .navbar-collapse {
         top: -50px;
         right: 175px;
     }
+    .card {
+        width: 13rem;
+        height: 13rem !important;
+    }
+    .card-img-top {
+        width: 9rem !important;
+    }
+    .card-body h6 {
+        left: 145px;
+        bottom: 145px;
+    }
 }
-
 @media (min-width: 1400px) {
     .card {
         width: 15rem;

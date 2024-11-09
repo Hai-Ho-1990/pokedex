@@ -162,7 +162,7 @@ footer {
 }
 
 .fire-background::before {
-  background-color: #eb9410;
+  background-color: #d48d21;
 }
 
 .water-background::before {
@@ -222,7 +222,7 @@ footer {
 }
 
 .poison-background::before {
-  background-color: #8645bf;
+  background-color: #7d4aaa;
 }
 
 .rock-background::before {
@@ -505,7 +505,10 @@ body {
         -ms-flex-positive: 0 !important;
             flex-grow: 0 !important;
     height: 100%;
+    position: absolute;
     z-index: 2;
+    top: 10px;
+    right: 95px;
   }
   #pokeball {
     width: 30%;
@@ -525,21 +528,6 @@ body {
     padding: 0 40px 0 40px !important;
     position: relative;
   }
-  /* .nav-link:after {
-      content: '';
-      height: 5px;
-      width: 99%;
-      background: #a92d22;
-
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      transition: height 0.3s;
-  } */
-  /* .nav-link:hover:after {
-      height: 60px;
-      z-index: 0;
-  } */
   .red-mode {
     -webkit-transform: scaleX(2) scaleY(1.8);
             transform: scaleX(2) scaleY(1.8);
@@ -601,5 +589,28 @@ body {
   }
   .footer-container > p {
     font-size: 0.8rem;
+  }
+}
+@media (min-width: 1050px) {
+  .navbar-collapse {
+    top: 10px;
+    right: 85px;
+  }
+}
+@media (min-width: 1100px) {
+  .navbar-collapse {
+    right: 80px;
+  }
+}
+@media (min-width: 1200px) {
+  .navbar-collapse {
+    top: -50px;
+    right: 175px;
+  }
+}
+@media (min-width: 1400px) {
+  .navbar-collapse {
+    top: -100px;
+    left: 253px;
   }
 }

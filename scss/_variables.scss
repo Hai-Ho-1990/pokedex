@@ -18,7 +18,6 @@ label {
     position: relative;
     display: block;
 }
-
 label::after {
     content: '';
     width: 11px;
@@ -31,7 +30,6 @@ label::after {
     box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
     display: block;
 }
-
 input {
     //Göm checkbox knapp
     width: 0;
@@ -41,13 +39,11 @@ input {
 input:checked + label {
     background-color: #a92d22;
 }
-
 input:checked + label:after {
     transform: translateX(-100%);
     left: 28px;
     background-color: white;
 }
-
 //Justering nav-bar
 .navbar {
     width: 103%;
@@ -55,19 +51,15 @@ input:checked + label:after {
     position: absolute;
     bottom: 250px;
 }
-
 .bg-body-tertiary {
     --bs-bg-opacity: none !important;
 }
-
 .navbar-toggler:focus {
     box-shadow: none !important;
 }
-
 .navbar-toggler {
     border: none !important;
 }
-
 .navbar-nav a {
     color: black;
     font-family: 'Poppins', sans-serif;
@@ -78,17 +70,14 @@ input:checked + label:after {
 .nav-link {
     position: relative;
 }
-
 .navbar-toggler {
     padding-left: 0 !important;
 }
-
 .navbar-collapse {
     background-color: white !important;
     height: 27vh;
     z-index: 1;
 }
-
 // Justering header
 header {
     background-color: white;
@@ -98,7 +87,6 @@ header {
     z-index: -1;
     overflow: hidden;
 }
-
 #pokeball {
     width: 250px;
     opacity: 10%;
@@ -108,7 +96,6 @@ header {
     left: 10%;
     z-index: 0;
 }
-
 /* Footer */
 footer {
     background-color: white;
@@ -116,31 +103,26 @@ footer {
     border-radius: 15px 15px 0 0;
     margin-top: 40px;
 }
-
 .footer-container {
     position: relative;
     top: 55px;
 }
-
 .footer-icon {
     width: 27px;
     padding-right: 5px;
     opacity: 70%;
 }
-
 .footer-icon-white {
     width: 27px;
     padding-right: 5px;
     opacity: 70%;
 }
-
 .icons {
     display: flex;
     justify-content: center;
     position: relative;
     top: 30px;
 }
-
 .footer-container > p {
     position: relative;
     top: 40px;
@@ -150,11 +132,12 @@ footer {
     opacity: 70%;
 }
 
+//Skapa bakgrundsfärger för varje typ av pokemon
 .grass-background::before {
     background-color: #5da95d;
 }
 .fire-background::before {
-    background-color: #eb9410;
+    background-color: #d48d21;
 }
 .water-background::before {
     background-color: #37a3ca;
@@ -199,7 +182,7 @@ footer {
     background-color: #94abd6;
 }
 .poison-background::before {
-    background-color: #8645bf;
+    background-color: #7d4aaa;
 }
 .rock-background::before {
     background-color: #b39b75;

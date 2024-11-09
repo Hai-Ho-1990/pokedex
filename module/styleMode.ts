@@ -1,5 +1,3 @@
-//------------------------------------------------------------------------------
-
 //Ändra & spara header & footer bakgrund färg när användare bockar av checkbox
 let checkbox = document.querySelector('#red-mode-toggle')! as HTMLInputElement;
 let header = document.querySelector('header')!;
@@ -8,8 +6,7 @@ let navIcon = document.querySelector('.navbar-toggler-icon')! as HTMLElement;
 let navCollapse = document.querySelector('.navbar-collapse')! as HTMLElement;
 let navLink = document.querySelectorAll(
     '.navbar-nav a'
-) as NodeListOf<HTMLElement>; // lösning till när man väljer flera elements.
-
+) as NodeListOf<HTMLElement>; // as Nodel.. är lösningen till när man väljer flera elements.
 let footer = document.querySelector('footer')!;
 let footerIcons = document.querySelectorAll(
     '.footer-icon'
@@ -20,14 +17,12 @@ let whiteIcons = document.querySelectorAll(
 let copyright = document.querySelector('p')!;
 
 //Skapar först stilar för header när användare bockar av knappen.
-
 function changeStyle() {
     if (checkbox.checked) {
         header.style.background = '#A92D22';
         heading.style.color = 'white';
         navIcon.style.color = 'white';
         navCollapse.style.setProperty('background', '#A92D22', 'important');
-
         copyright.style.color = 'white';
         footer.style.background = '#A92D22';
         for (let i = 0; i < navLink.length; i++) {
@@ -61,7 +56,6 @@ function setupCheckboxListener() {
             'checkboxStatus',
             JSON.stringify(checkbox.checked)
         );
-
         changeStyle();
     });
 }

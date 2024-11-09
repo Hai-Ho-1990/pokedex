@@ -6,7 +6,6 @@ let loadMore = document.querySelector('.btn-danger')! as HTMLElement;
 let filteredPokemon: any[] = [];
 
 // Fetch Url och hämta url för 151 pokemon i json objekt
-
 async function fetchPokemonApi() {
     try {
         let response = await fetch(pokemonApi);
@@ -15,25 +14,29 @@ async function fetchPokemonApi() {
                 'Nätverksresponsen var inte okej: ' + response.status
             );
         }
+
         let data = await response.json();
         let result = data.results;
+
         console.log(result);
         return result;
     } catch (error) {
         console.error('Det gick inte att hämta data', error);
     }
 }
-
 fetchPokemonApi();
 
 //Skapa en ny funktion och köra ovanför function för att hämta alla url om varenda pokemon
 async function getPokemonUrl() {
     let response = await fetchPokemonApi();
+
     interface Pokemon {
         name: string;
         url: string;
     }
+
     let pokemonUrl = response.map((pokemon: Pokemon) => pokemon.url);
+
     console.log(pokemonUrl);
     return pokemonUrl;
 }
@@ -53,10 +56,10 @@ async function getPokemonInfo() {
 
     // Vänta på att alla promises ska avslutas och samla resultaten
     let pokemons = await Promise.all(promises);
+
     console.log(pokemons); // Logga resultaten (array av Pokémon-objekt)
     return pokemons; // Returnera arrayen med Pokémon-objekt
 }
-
 getPokemonInfo();
 
 //Load more funktion
@@ -73,29 +76,30 @@ interface Pokemon {
     name: string;
     id: number;
 }
+
 let pokemonPerPage = 12; //deklarera antal pokemon ska visas.
 let currentPage = 1; //deklarera aktuell sidan
 let allPokemon: Pokemon[] = [];
+
 //Hämta pokemon
 async function displayPokemon() {
     allPokemon = await getPokemonInfo();
+
     // Start index
     let start = (currentPage - 1) * pokemonPerPage;
     // Sista index
     let end = currentPage * pokemonPerPage;
     //Visa endast 12 pokemon på sidan
-
     let pokemonToDisplay = allPokemon.slice(start, end);
 
     //Vi har en lista av alla pokemon objekter. Loopa den listan för att ta ut
     //varje pokemon och dess egenskaper
-
     pokemonToDisplay.forEach((pokemon: Pokemon) => {
         let imgSrc = pokemon.sprites.other['official-artwork'].front_default;
         let pokemonName = pokemon.name;
         let order = pokemon.id;
-        //Skapar en card för varje pokemon och visa upp den på webbläsare
 
+        //Skapar en card för varje pokemon och visa upp den på webbläsare
         containerPokemon.innerHTML += `<div class="col-md-4">
         <a href="detail.html?id=${order}" style="text-decoration:none" >
         <div class="card" >
@@ -111,7 +115,6 @@ async function displayPokemon() {
         loadMore.style.display = 'none';
     }
 }
-
 displayPokemon();
 
 //Varje gång button trycks ska en sidan med 12 pokemon visas.
@@ -128,7 +131,6 @@ loadMore.addEventListener('click', () => {
 //------------------------------------------------------------------------------
 
 //Ändra & spara header & footer bakgrund färg när användare bockar av checkbox
-
 import { changeStyle, setupCheckboxListener } from './module/styleMode.js';
 
 changeStyle();
@@ -178,7 +180,8 @@ function displayFilteredPokemon() {
         loadMore.style.display = 'block';
     }
 
-    // Vi har en lista av alla pokemon objekter. Loopa den listan för att ta ut varje pokemon och dess egenskaper */
+    // Vi har en lista av alla pokemon objekter. Loopa den listan för att ta ut
+    //varje pokemon och dess önskade egenskaper */
     pokemonToDisplay.forEach((pokemon) => {
         let imgSrc = pokemon.sprites.other['official-artwork'].front_default;
         let pokemonName = pokemon.name;

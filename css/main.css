@@ -1,4 +1,3 @@
-@charset "UTF-8";
 /* Header */
 .red-mode {
   display: inline;
@@ -163,7 +162,7 @@ footer {
 }
 
 .fire-background::before {
-  background-color: #eb9410;
+  background-color: #d48d21;
 }
 
 .water-background::before {
@@ -223,7 +222,7 @@ footer {
 }
 
 .poison-background::before {
-  background-color: #8645bf;
+  background-color: #7d4aaa;
 }
 
 .rock-background::before {
@@ -237,6 +236,11 @@ footer {
 
 body {
   background-color: #f1eeee !important;
+}
+
+main {
+  overflow: auto;
+  height: 100vh;
 }
 
 .red-mode {
@@ -322,15 +326,6 @@ input:checked + label:after {
   position: relative;
 }
 
-/* .nav-link:after {
-    content: '';
-    height: 1px;
-    width: 107%;
-    background: rgb(216, 216, 216);
-    position: absolute;
-    bottom: 0;
-    left: -12px;
-} */
 .navbar-toggler {
   padding-left: 0 !important;
 }
@@ -397,7 +392,6 @@ fieldset > h1 {
   z-index: 1;
 }
 
-/* Main börjar här */
 main > h1 {
   font-family: "Poppins", sans-serif;
   font-weight: bold;
@@ -422,6 +416,7 @@ main > h1 {
       -ms-flex-pack: space-evenly;
           justify-content: space-evenly;
   width: 100%;
+  margin-top: 40px;
 }
 
 .card {
@@ -485,12 +480,28 @@ main {
   opacity: 60%;
 }
 
+.method-btn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+  top: 10%;
+}
+
 /* Footer */
 footer {
   background-color: white;
   height: 17vh;
   border-radius: 15px 15px 0 0;
   margin-top: 40px;
+  position: sticky;
 }
 
 .footer-container {
@@ -607,6 +618,14 @@ footer {
   .card {
     width: 11rem;
     height: 11rem !important;
+    -webkit-transition: -webkit-transform 0.2s ease-in-out;
+    transition: -webkit-transform 0.2s ease-in-out;
+    transition: transform 0.2s ease-in-out;
+    transition: transform 0.2s ease-in-out, -webkit-transform 0.2s ease-in-out;
+  }
+  .card:hover {
+    -webkit-transform: translateY(-10px);
+            transform: translateY(-10px);
   }
   .card-img-top {
     width: 7rem !important;
@@ -621,6 +640,18 @@ footer {
     font-size: 1rem;
     bottom: 10px;
   }
+  .method-btn {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -ms-flex-item-align: center;
+        align-self: center;
+    padding-left: 50px;
+  }
+  #addPokemon {
+    margin-right: 50px;
+  }
 }
 @media (min-width: 1050px) {
   .navbar-collapse {
@@ -633,11 +664,29 @@ footer {
     top: -30px;
     right: 150px;
   }
+  .card {
+    width: 12rem;
+  }
+  .card-body h6 {
+    left: 125px;
+    bottom: 116px;
+  }
 }
 @media (min-width: 1200px) {
   .navbar-collapse {
     top: -50px;
     right: 175px;
+  }
+  .card {
+    width: 13rem;
+    height: 13rem !important;
+  }
+  .card-img-top {
+    width: 9rem !important;
+  }
+  .card-body h6 {
+    left: 145px;
+    bottom: 145px;
   }
 }
 @media (min-width: 1400px) {

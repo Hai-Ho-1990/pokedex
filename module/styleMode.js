@@ -1,11 +1,10 @@
-//------------------------------------------------------------------------------
 //Ändra & spara header & footer bakgrund färg när användare bockar av checkbox
 let checkbox = document.querySelector('#red-mode-toggle');
 let header = document.querySelector('header');
 let heading = document.querySelector('h1');
 let navIcon = document.querySelector('.navbar-toggler-icon');
 let navCollapse = document.querySelector('.navbar-collapse');
-let navLink = document.querySelectorAll('.navbar-nav a'); // lösning till när man väljer flera elements.
+let navLink = document.querySelectorAll('.navbar-nav a'); // as Nodel.. är lösningen till när man väljer flera elements.
 let footer = document.querySelector('footer');
 let footerIcons = document.querySelectorAll('.footer-icon');
 let whiteIcons = document.querySelectorAll('.footer-icon-white');

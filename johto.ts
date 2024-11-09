@@ -104,13 +104,12 @@ async function displayJohtoPokemon() {
 
     //Vi har en lista av alla pokemon objekter. Loopa den listan för att ta ut
     //varje pokemon och dess egenskaper
-
     pokemonToDisplay.forEach((pokemon: any) => {
         let imgSrc = pokemon.image;
         let pokemonName = pokemon.name;
         let order = pokemon.order;
-        //Skapar en card för varje pokemon och visa upp den på webbläsare
 
+        //Skapar en card för varje pokemon och visa upp den på webbläsare
         containerPokemon.innerHTML += `<div class="col-md-4">
             <a href="detail.html?id=${order}" style="text-decoration:none" >
             <div class="card" >
@@ -122,7 +121,6 @@ async function displayJohtoPokemon() {
             </div></div>`;
     });
 }
-
 displayJohtoPokemon();
 
 import { changeStyle, setupCheckboxListener } from './module/styleMode.js';
