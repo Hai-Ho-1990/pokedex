@@ -8,15 +8,14 @@ async function fetchPokemonApi() {
     try {
         let response = await fetch(pokemonHoenn);
         if (!response.ok) {
-            throw new Error(
-                'Nätverksresponsen var inte okej: ' + response.status
-            );
+            throw new Error('Nätverksresponsen var inte okej: ' + response.status);
         }
         let data = await response.json();
         let pokemonEntries = data.results;
         console.log(pokemonEntries);
         return pokemonEntries;
-    } catch (error) {
+    }
+    catch (error) {
         console.error('Det gick inte att hämta data', error);
     }
 }
@@ -85,7 +84,8 @@ loadMore.addEventListener('click', () => {
     // Om sökfältet är tom så visas alla pokemon annars endast filtrerad pokemon visas.
     if (inputElement.value.trim() === '') {
         displayPokemon();
-    } else {
+    }
+    else {
         displayFilteredPokemon();
     }
 });
@@ -101,16 +101,15 @@ let inputElement = document.getElementById('search');
 let pokedexText = document.querySelector('main h1');
 inputElement.addEventListener('input', function (event) {
     let input = event.target.value.toLowerCase(); //
-    filteredPokemonHoenn = allPokemon.filter((pokemon) =>
-        pokemon.name.toLowerCase().includes(input)
-    );
+    filteredPokemonHoenn = allPokemon.filter((pokemon) => pokemon.name.toLowerCase().includes(input));
     containerPokemonHoenn.innerHTML = '';
     //Om det finns inga pokemon att visa ska fel meddelande visas upp.
     if (filteredPokemonHoenn.length === 0) {
         message.style.display = 'block';
         loadMore.style.display = 'none';
         pokedexText.style.display = 'none';
-    } else {
+    }
+    else {
         message.style.display = 'none';
         displayFilteredPokemon();
     }
@@ -129,7 +128,8 @@ function displayFilteredPokemon() {
     let pokemonToDisplay = filteredPokemonHoenn.slice(start, end);
     if (end >= filteredPokemonHoenn.length) {
         loadMore.style.display = 'none';
-    } else {
+    }
+    else {
         loadMore.style.display = 'block';
     }
     // Vi har en lista av alla pokemon objekter. Loopa den listan för att ta ut

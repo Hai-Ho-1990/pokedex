@@ -34,14 +34,16 @@
                             id="navbarNavAltMarkup"
                         >
                             <div class="navbar-nav">
-                                <a class="nav-link" href="index.html">KANTO</a>
-                                <a class="nav-link" href="johto.html">JOHTO</a>
-                                <a class="nav-link" href="hoenn.html">HOENN</a>
-                                <a class="nav-link" href="sinnoh.html"
-                                    >SINNOH</a
+                                <a class="nav-link" href="index.html">GEN I</a>
+                                <a class="nav-link" href="johto.html">GEN II</a>
+                                <a class="nav-link" href="hoenn.html"
+                                    >GEN III</a
                                 >
-                                <a class="nav-link" href="unnova.html"
-                                    >UNNOVA</a
+                                <a class="nav-link" href="sinnoh.html"
+                                    >GEN IV</a
+                                >
+                                <a class="nav-link" href="favorite.html"
+                                    >FAVORITE</a
                                 >
                             </div>
                         </div>
@@ -53,7 +55,7 @@
                 </div>
 
                 <fieldset>
-                    <h1>Who's that pokemon ?</h1>
+                    <h1>Search your favorite pokemon</h1>
                     <div class="search-field"></div>
                     <img
                         id="search-icon"
@@ -72,17 +74,77 @@
                 <h1>Pokedex</h1>
                 <div class="pokemon-container"></div>
 
+                <div class="favorite-pokemon-container"></div>
+
                 <div class="message" style="display: none; height: 550px">
                     <h2>No Pokemon Matched Your Search.</h2>
                 </div>
+                <div class="method-btn">
+                    <button
+                        id="delete-pokemon"
+                        type="button"
+                        class="btn btn-danger"
+                        style="display: none"
+                    >
+                        -
+                    </button>
+                    <button
+                        id="show-pokemon"
+                        type="button"
+                        class="btn btn-outline-danger btn-lg"
+                        style="
+                            display: block;
+                            border-radius: 100%;
+                            width: 50px;
+                            height: 50px;
+                        "
+                    >
+                        <img
+                            src="./assets/star.png"
+                            alt="star"
+                            style="
+                                width: 50px;
+                                margin-left: -17px;
+                                margin-top: -9px;
+                            "
+                        />
+                    </button>
+                    <button
+                        id="add-more"
+                        type="button"
+                        class="btn btn-danger"
+                        style="display: none"
+                    >
+                        Add more...
+                    </button>
+                    <button
+                        id="load-more"
+                        type="button"
+                        class="btn btn-danger btn-lg"
+                        style="
+                            display: block;
+                            border-radius: 100%;
+                            width: 50px;
+                            height: 50px;
+                        "
+                    >
+                        ...
+                    </button>
 
-                <button
-                    type="button"
-                    class="btn btn-danger"
-                    style="display: block"
-                >
-                    Load more
-                </button>
+                    <button
+                        id="add-pokemon"
+                        type="button"
+                        class="btn btn-danger btn-lg"
+                        style="
+                            display: block;
+                            border-radius: 100%;
+                            width: 50px;
+                            height: 50px;
+                        "
+                    >
+                        +
+                    </button>
+                </div>
             </main>
 
             <!-- Footer här -->
@@ -154,6 +216,6 @@
             integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
             crossorigin="anonymous"
         ></script>
-        <script type="module" src="./js/unnova.js"></script>
+        <script type="module" src="./js/favorite.js"></script>
     </body>
 </html>

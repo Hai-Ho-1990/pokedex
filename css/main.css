@@ -419,6 +419,16 @@ main > h1 {
   margin-top: 40px;
 }
 
+.favorite-pokemon-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
 .card {
   margin-bottom: 12px;
   width: 7.5rem;
@@ -460,10 +470,32 @@ main {
           flex-direction: column;
 }
 
-.btn-danger {
+.method-btn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal !important;
+  -webkit-box-direction: normal !important;
+      -ms-flex-direction: row !important;
+          flex-direction: row !important;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+  border-radius: 30px;
+  padding-bottom: 40px;
+}
+
+#load-more,
+#show-pokemon,
+#add-pokemon {
   -ms-flex-item-align: center;
       align-self: center;
-  margin-top: 40px;
+  margin-top: 40%;
+  margin-left: 8px;
 }
 
 .message {
@@ -651,8 +683,10 @@ footer {
         align-self: center;
     padding-left: 50px;
   }
-  #addPokemon {
-    margin-right: 50px;
+  #load-more,
+  #show-pokemon,
+  #add-pokemon {
+    margin-top: 100%;
   }
 }
 @media (min-width: 1050px) {
