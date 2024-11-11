@@ -169,6 +169,10 @@ main > h1 {
 .favorite-pokemon-container {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    width: 100%;
+    margin-top: 40px;
 }
 .card {
     margin-bottom: 12px;
@@ -208,15 +212,17 @@ main {
     flex-direction: row !important;
     justify-content: center;
     align-items: center;
-    position: relative;
+
     border-radius: 30px;
     padding-bottom: 40px;
 }
 #load-more,
 #show-pokemon,
-#add-pokemon {
+#add-pokemon,
+#delete-pokemon,
+#go-back {
     align-self: center;
-    margin-top: 40%;
+    margin-top: 20%;
     margin-left: 8px;
 }
 .message {
@@ -277,7 +283,8 @@ footer {
 
 //Media queries
 @media (min-width: 768px) {
-    .pokemon-container {
+    .pokemon-container,
+    .favorite-pokemon-container {
         display: grid;
         grid-template-columns: repeat(5, 1fr);
         gap: 16px;
@@ -379,10 +386,13 @@ footer {
         align-self: center;
         padding-left: 50px;
     }
-    #load-more,
-    #show-pokemon,
-    #add-pokemon {
-        margin-top: 100%;
+    //Justera buttons
+    #load-more {
+        width: 150px;
+        height: 50px;
+    }
+    #delete-pokemon > p {
+        color: white !important;
     }
 }
 @media (min-width: 1050px) {
@@ -441,5 +451,4 @@ footer {
         top: -100px;
         left: 253px;
     }
-    //Justera buttons
 }

@@ -10,7 +10,7 @@ let favoritePokemon = document.querySelector(
 )! as HTMLElement;
 let filteredPokemon: any[] = [];
 let add = document.querySelector('#add-pokemon')! as HTMLElement;
-let addMore = document.querySelector('#add-more')! as HTMLElement;
+let back = document.querySelector('#go-back')! as HTMLElement;
 let show = document.querySelector('#show-pokemon')! as HTMLElement;
 let minus = document.querySelector('#delete-pokemon')! as HTMLElement;
 let fieldSet = document.querySelector('fieldset')! as HTMLElement;
@@ -206,7 +206,6 @@ function displayFilteredPokemon() {
 displayFilteredPokemon();
 //------------------------------------------------------------------------------
 //Markera pokemon
-
 let savedPokemonId: string;
 function choosePokemon() {
     let cards = document.querySelectorAll('.card') as NodeListOf<HTMLElement>;
@@ -340,7 +339,7 @@ async function showFavoritePokemon() {
         show.style.display = 'none';
         minus.style.display = 'block';
         add.style.display = 'none';
-        addMore.style.display = 'block';
+        back.style.display = 'block';
         fieldSet.style.display = 'none';
         headingFavoriteList.innerHTML = 'Your favourite list';
         await displayFavoritePokemon();
@@ -399,6 +398,10 @@ minus.addEventListener('click', async function () {
     }
 });
 
+//Går tillbaka till favorite sidan
+back.addEventListener('click', function () {
+    location.reload();
+});
 //------------------------------------------------------------------------------
 //Ändra & spara header & footer bakgrund färg när användare bockar av checkbox
 import { changeStyle, setupCheckboxListener } from '../module/styleMode.js';

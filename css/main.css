@@ -182,7 +182,7 @@ footer {
 }
 
 .psychic-background::before {
-  background-color: #dc5697;
+  background-color: #d8619b;
 }
 
 .fairy-background::before {
@@ -427,6 +427,13 @@ main > h1 {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  width: 100%;
+  margin-top: 40px;
 }
 
 .card {
@@ -484,17 +491,18 @@ main {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  position: relative;
   border-radius: 30px;
   padding-bottom: 40px;
 }
 
 #load-more,
 #show-pokemon,
-#add-pokemon {
+#add-pokemon,
+#delete-pokemon,
+#go-back {
   -ms-flex-item-align: center;
       align-self: center;
-  margin-top: 40%;
+  margin-top: 20%;
   margin-left: 8px;
 }
 
@@ -574,7 +582,8 @@ footer {
 }
 
 @media (min-width: 768px) {
-  .pokemon-container {
+  .pokemon-container,
+  .favorite-pokemon-container {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     gap: 16px;
@@ -683,10 +692,12 @@ footer {
         align-self: center;
     padding-left: 50px;
   }
-  #load-more,
-  #show-pokemon,
-  #add-pokemon {
-    margin-top: 100%;
+  #load-more {
+    width: 150px;
+    height: 50px;
+  }
+  #delete-pokemon > p {
+    color: white !important;
   }
 }
 @media (min-width: 1050px) {

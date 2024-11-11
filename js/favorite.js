@@ -5,7 +5,7 @@ let loadMore = document.querySelector('#load-more');
 let favoritePokemon = document.querySelector('.favorite-pokemon-container');
 let filteredPokemon = [];
 let add = document.querySelector('#add-pokemon');
-let addMore = document.querySelector('#add-more');
+let back = document.querySelector('#go-back');
 let show = document.querySelector('#show-pokemon');
 let minus = document.querySelector('#delete-pokemon');
 let fieldSet = document.querySelector('fieldset');
@@ -264,7 +264,7 @@ async function showFavoritePokemon() {
         show.style.display = 'none';
         minus.style.display = 'block';
         add.style.display = 'none';
-        addMore.style.display = 'block';
+        back.style.display = 'block';
         fieldSet.style.display = 'none';
         headingFavoriteList.innerHTML = 'Your favourite list';
         await displayFavoritePokemon();
@@ -316,6 +316,10 @@ minus.addEventListener('click', async function () {
         // Om Pokémon inte hittades
         console.error('Pokémon to delete not found');
     }
+});
+//Går tillbaka till favorite sidan
+back.addEventListener('click', function () {
+    location.reload();
 });
 //------------------------------------------------------------------------------
 //Ändra & spara header & footer bakgrund färg när användare bockar av checkbox

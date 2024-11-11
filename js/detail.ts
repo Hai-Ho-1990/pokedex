@@ -99,7 +99,7 @@ async function getPokemon() {
     pokemonImg.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemonId}.png`;
     pokemonOrder.textContent = `#${pokemon.id}`;
     // Hämtar pokemon weight och height
-    pokemonWeight.innerHTML = `${pokemon.weight}0g`;
+    pokemonWeight.innerHTML = `${pokemon.weight}00g`;
     pokemonHeight.innerHTML = `${pokemon.height}0cm`;
 
     let pokemonTypeUrl = pokemon.types.map((type: any) => type.type.url);
