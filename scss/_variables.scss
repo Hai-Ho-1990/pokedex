@@ -1,5 +1,4 @@
-/* Header */
-//Skapa red mode button
+/* Skapa red mode button */
 .red-mode {
     display: inline;
     z-index: 3;
@@ -30,11 +29,10 @@ label::after {
     box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
     display: block;
 }
+/*dölj checkbox knapp */
 input {
-    //Göm checkbox knapp
     width: 0;
     height: 0;
-    visibility: none;
 }
 input:checked + label {
     background-color: #a92d22;
@@ -44,7 +42,8 @@ input:checked + label:after {
     left: 28px;
     background-color: white;
 }
-//Justering nav-bar
+
+/* Justering nav-bar */
 .navbar {
     width: 103%;
     z-index: 2;
@@ -78,7 +77,8 @@ input:checked + label:after {
     height: 27vh;
     z-index: 1;
 }
-// Justering header
+
+/* Justering header */
 header {
     background-color: white;
     border-radius: 0 0 15px 15px;
@@ -96,12 +96,145 @@ header {
     left: 10%;
     z-index: 0;
 }
+
+/* Justering fieldset */
+fieldset {
+    position: absolute;
+    top: 22%;
+    width: 100%;
+}
+fieldset > h1 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    font-size: 1.5rem;
+    position: relative;
+    left: 10%;
+}
+#search {
+    position: relative;
+    left: 7%;
+    border-radius: 15px;
+    width: 80%;
+    height: 40px;
+    z-index: 0;
+    padding-left: 20px;
+    background-color: #eeeeee;
+    border: none;
+}
+#search:focus {
+    outline: none;
+}
+#search-icon {
+    position: absolute;
+    margin-top: 1%;
+    right: 15%;
+    z-index: 1;
+}
+
+/* Main börjar här
+Justering innehåll */
+main > h1 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    font-size: 1.5rem;
+    position: relative;
+    left: 10%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.pokemon-container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 100%;
+    margin-top: 40px;
+}
+.favorite-pokemon-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    width: 100%;
+    margin-top: 40px;
+}
+.card {
+    margin-bottom: 12px;
+    width: 7.5rem;
+    height: 7rem !important;
+    background-color: #d9d9d9 !important;
+    border: none !important;
+    cursor: pointer;
+}
+.card-body h5 {
+    font-size: 0.7rem;
+    text-align: center;
+    position: relative;
+    bottom: 20px;
+}
+
+.card-body h6 {
+    font-size: 0.7rem;
+    position: relative;
+    bottom: 82px;
+    left: 70px;
+}
+.card-img-top {
+    width: 4.5rem !important;
+    align-self: center;
+    position: relative;
+    top: 15px;
+}
+
+/* Load more button */
+main {
+    display: flex;
+    flex-direction: column;
+}
+.method-btn {
+    display: flex;
+    flex-direction: row !important;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 30px;
+    padding-bottom: 40px;
+}
+#load-more,
+#show-pokemon,
+#add-pokemon,
+#delete-pokemon,
+#go-back {
+    align-self: center;
+    margin-top: 20%;
+    margin-left: 8px;
+}
+.message {
+    align-content: center;
+}
+.message h2 {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    font-weight: bolder;
+    text-align: center;
+    font-size: 1.5rem;
+    opacity: 60%;
+}
+.method-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    top: 10%;
+}
+
 /* Footer */
 footer {
     background-color: white;
     height: 17vh;
     border-radius: 15px 15px 0 0;
     margin-top: 40px;
+    position: sticky;
 }
 .footer-container {
     position: relative;
@@ -132,7 +265,7 @@ footer {
     opacity: 70%;
 }
 
-//Skapa bakgrundsfärger för varje typ av pokemon
+/* Skapa bakgrundsfärger för varje typ av pokemon */
 .grass-background::before {
     background-color: #5da95d;
 }

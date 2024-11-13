@@ -8,7 +8,7 @@ body {
     width: 100%;
 }
 
-// Background top & bottom
+/* Background top & bottom */
 #pokemon-wrapper {
     position: relative;
     height: 100%;
@@ -48,7 +48,7 @@ body {
     width: 100%;
 }
 
-// Name och id
+/* Name och id */
 #head-wrapper {
     display: flex;
     flex-direction: row;
@@ -71,7 +71,7 @@ body {
     padding-top: 8px;
 }
 
-//Img, back och forward button
+/* Img, back och forward button */
 .pokemon-image img {
     width: 100%;
 }
@@ -86,7 +86,7 @@ body {
     align-self: center;
 }
 
-//Pokemon info
+/* Pokemon info */
 .pokemon-detail-wrapper {
     display: flex;
     flex-direction: column;
@@ -129,7 +129,7 @@ body {
 .type {
     width: 10vh;
 }
-// Justera chart
+/* Justera chart */
 .pokemon-detail-wrapper > h1 {
     font-weight: 400;
     font-size: 1.2rem;
@@ -146,11 +146,9 @@ body {
     margin-top: 20px;
 }
 
-//------------------------------------------------------------------------------
-// Medier queries
-
+/* ------------------------------------------------------------------------------ */
+/* Medier queries */
 @media (min-width: 765px) and (max-width: 992px) {
-    //Red mode knapp
     .navbar-toggler {
         padding-left: 7% !important;
     }
@@ -158,16 +156,17 @@ body {
         width: 40px !important;
         margin-top: 20px;
     }
+    /*  Red mode knapp */
     .red-mode {
         margin-top: 25px;
         transform: scaleX(1.5) scaleY(1.5);
     }
-    //Dropdown meny
+    /* Dropdown meny */
     .navbar-nav a {
         margin-top: 2.5%;
         margin-left: 6%;
     }
-    //Pokemon wrapp
+    /* Pokemon wrapp */
     #pokemon-wrapper::before {
         height: 45%;
         transform: scaleX(0.85);
@@ -187,16 +186,15 @@ body {
         font-size: 2rem;
     }
 
-    //Pokemon info
+    /* Pokemon info */
     .pokemon-detail-wrapper {
         padding-left: 40px;
         padding-right: 40px;
     }
-
-    //Chart
     .pokemon-detail-wrapper > h1 {
         margin-top: 60px;
     }
+    /*  Chart */
     #myRadarChart {
         width: 500px;
         height: 500px;
@@ -208,7 +206,7 @@ body {
         max-width: 100%;
     }
 
-    //Footer
+    /* Footer */
     footer {
         margin-top: 20px;
     }
@@ -253,7 +251,7 @@ body {
         z-index: 1;
     }
 
-    //Pokemon wrapper
+    /* Pokemon wrapper */
     #pokemon-wrapper::before {
         height: 30%;
     }
@@ -287,12 +285,12 @@ body {
     .pokemon-types img {
         width: 12vh;
     }
-
-    //chart
     .pokemon-detail-wrapper > h1 {
         font-size: 1.6rem;
         margin-top: 80px;
     }
+
+    /* chart */
     #myRadarChart {
         width: 650px;
         height: 650px;
@@ -302,7 +300,7 @@ body {
         width: 650px;
     }
 
-    //footer
+    /* footer */
     .footer-icon,
     .footer-icon-white {
         width: 40px;

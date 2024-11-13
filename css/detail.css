@@ -1,4 +1,5 @@
-/* Header */
+@charset "UTF-8";
+/* Skapa red mode button */
 .red-mode {
   display: inline;
   z-index: 3;
@@ -33,10 +34,10 @@ label::after {
   display: block;
 }
 
+/*dölj checkbox knapp */
 input {
   width: 0;
   height: 0;
-  visibility: none;
 }
 
 input:checked + label {
@@ -50,6 +51,7 @@ input:checked + label:after {
   background-color: white;
 }
 
+/* Justering nav-bar */
 .navbar {
   width: 103%;
   z-index: 2;
@@ -92,6 +94,7 @@ input:checked + label:after {
   z-index: 1;
 }
 
+/* Justering header */
 header {
   background-color: white;
   border-radius: 0 0 15px 15px;
@@ -112,12 +115,197 @@ header {
   z-index: 0;
 }
 
+/* Justering fieldset */
+fieldset {
+  position: absolute;
+  top: 22%;
+  width: 100%;
+}
+
+fieldset > h1 {
+  font-family: "Poppins", sans-serif;
+  font-weight: bold;
+  font-size: 1.5rem;
+  position: relative;
+  left: 10%;
+}
+
+#search {
+  position: relative;
+  left: 7%;
+  border-radius: 15px;
+  width: 80%;
+  height: 40px;
+  z-index: 0;
+  padding-left: 20px;
+  background-color: #eeeeee;
+  border: none;
+}
+
+#search:focus {
+  outline: none;
+}
+
+#search-icon {
+  position: absolute;
+  margin-top: 1%;
+  right: 15%;
+  z-index: 1;
+}
+
+/* Main börjar här
+Justering innehåll */
+main > h1 {
+  font-family: "Poppins", sans-serif;
+  font-weight: bold;
+  font-size: 1.5rem;
+  position: relative;
+  left: 10%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.pokemon-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  width: 100%;
+  margin-top: 40px;
+}
+
+.favorite-pokemon-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  width: 100%;
+  margin-top: 40px;
+}
+
+.card {
+  margin-bottom: 12px;
+  width: 7.5rem;
+  height: 7rem !important;
+  background-color: #d9d9d9 !important;
+  border: none !important;
+  cursor: pointer;
+}
+
+.card-body h5 {
+  font-size: 0.7rem;
+  text-align: center;
+  position: relative;
+  bottom: 20px;
+}
+
+.card-body h6 {
+  font-size: 0.7rem;
+  position: relative;
+  bottom: 82px;
+  left: 70px;
+}
+
+.card-img-top {
+  width: 4.5rem !important;
+  -ms-flex-item-align: center;
+      align-self: center;
+  position: relative;
+  top: 15px;
+}
+
+/* Load more button */
+main {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.method-btn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal !important;
+  -webkit-box-direction: normal !important;
+      -ms-flex-direction: row !important;
+          flex-direction: row !important;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 30px;
+  padding-bottom: 40px;
+}
+
+#load-more,
+#show-pokemon,
+#add-pokemon,
+#delete-pokemon,
+#go-back {
+  -ms-flex-item-align: center;
+      align-self: center;
+  margin-top: 20%;
+  margin-left: 8px;
+}
+
+.message {
+  -ms-flex-line-pack: center;
+      align-content: center;
+}
+
+.message h2 {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  font-weight: bolder;
+  text-align: center;
+  font-size: 1.5rem;
+  opacity: 60%;
+}
+
+.method-btn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+  top: 10%;
+}
+
 /* Footer */
 footer {
   background-color: white;
   height: 17vh;
   border-radius: 15px 15px 0 0;
   margin-top: 40px;
+  position: sticky;
 }
 
 .footer-container {
@@ -157,6 +345,7 @@ footer {
   opacity: 70%;
 }
 
+/* Skapa bakgrundsfärger för varje typ av pokemon */
 .grass-background::before {
   background-color: #5da95d;
 }
@@ -239,6 +428,7 @@ body {
   width: 100%;
 }
 
+/* Background top & bottom */
 #pokemon-wrapper {
   position: relative;
   height: 100%;
@@ -288,6 +478,7 @@ body {
   width: 100%;
 }
 
+/* Name och id */
 #head-wrapper {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -321,6 +512,7 @@ body {
   padding-top: 8px;
 }
 
+/* Img, back och forward button */
 .pokemon-image img {
   width: 100%;
 }
@@ -345,6 +537,7 @@ body {
       align-self: center;
 }
 
+/* Pokemon info */
 .pokemon-detail-wrapper {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -417,6 +610,7 @@ body {
   width: 10vh;
 }
 
+/* Justera chart */
 .pokemon-detail-wrapper > h1 {
   font-weight: 400;
   font-size: 1.2rem;
@@ -435,6 +629,8 @@ body {
   margin-top: 20px;
 }
 
+/* ------------------------------------------------------------------------------ */
+/* Medier queries */
 @media (min-width: 765px) and (max-width: 992px) {
   .navbar-toggler {
     padding-left: 7% !important;
@@ -443,15 +639,18 @@ body {
     width: 40px !important;
     margin-top: 20px;
   }
+  /*  Red mode knapp */
   .red-mode {
     margin-top: 25px;
     -webkit-transform: scaleX(1.5) scaleY(1.5);
             transform: scaleX(1.5) scaleY(1.5);
   }
+  /* Dropdown meny */
   .navbar-nav a {
     margin-top: 2.5%;
     margin-left: 6%;
   }
+  /* Pokemon wrapp */
   #pokemon-wrapper::before {
     height: 45%;
     -webkit-transform: scaleX(0.85);
@@ -473,6 +672,7 @@ body {
   .id-wrapp .order {
     font-size: 2rem;
   }
+  /* Pokemon info */
   .pokemon-detail-wrapper {
     padding-left: 40px;
     padding-right: 40px;
@@ -480,6 +680,7 @@ body {
   .pokemon-detail-wrapper > h1 {
     margin-top: 60px;
   }
+  /*  Chart */
   #myRadarChart {
     width: 500px;
     height: 500px;
@@ -490,6 +691,7 @@ body {
     height: 400px;
     max-width: 100%;
   }
+  /* Footer */
   footer {
     margin-top: 20px;
   }
@@ -536,6 +738,7 @@ body {
     left: 30px;
     z-index: 1;
   }
+  /* Pokemon wrapper */
   #pokemon-wrapper::before {
     height: 30%;
   }
@@ -574,6 +777,7 @@ body {
     font-size: 1.6rem;
     margin-top: 80px;
   }
+  /* chart */
   #myRadarChart {
     width: 650px;
     height: 650px;
@@ -582,6 +786,7 @@ body {
     margin-bottom: 40px;
     width: 650px;
   }
+  /* footer */
   .footer-icon,
   .footer-icon-white {
     width: 40px;
