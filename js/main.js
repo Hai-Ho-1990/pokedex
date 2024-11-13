@@ -136,7 +136,7 @@ function displayFilteredPokemon() {
 //------------------------------------------------------------------------------
 // Ändra och spara bakgrundsfärg för header och footer
 //------------------------------------------------------------------------------
-import { changeStyle, setupCheckboxListener } from '../module/styleMode.js';
+import { changeStyle, setupCheckboxListener } from '../module/red-mode.js';
 changeStyle();
 setupCheckboxListener();
 //# sourceMappingURL=main.js.map

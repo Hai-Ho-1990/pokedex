@@ -1,4 +1,3 @@
-"use strict";
 // API Endpoint
 const pokemonApi = 'https://pokeapi.co/api/v2/pokemon?offset=0&limit=493';
 // DOM Elements
@@ -265,4 +264,8 @@ displayPokemon();
 addPokemon();
 showFavoritePokemon();
 goBack();
+// Ändra & spara header och footer bakgrundsfärg
+import { changeStyle, setupCheckboxListener } from '../module/red-mode.js';
+changeStyle();
+setupCheckboxListener();
 //# sourceMappingURL=favorite.js.map

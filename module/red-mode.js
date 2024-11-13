@@ -65,4 +65,4 @@ if (saveCheckboxStatus) {
 }
 // Exporterar funktionerna
 export { changeStyle, setupCheckboxListener };
-//# sourceMappingURL=styleMode.js.map
+//# sourceMappingURL=red-mode.js.map

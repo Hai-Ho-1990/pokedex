@@ -323,3 +323,9 @@ displayPokemon();
 addPokemon();
 showFavoritePokemon();
 goBack();
+
+// Ändra & spara header och footer bakgrundsfärg
+import { changeStyle, setupCheckboxListener } from '../module/red-mode.js';
+
+changeStyle();
+setupCheckboxListener();

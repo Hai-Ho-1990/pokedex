@@ -139,7 +139,7 @@ function displayFilteredPokemon() {
 //------------------------------------------------------------------------------
 // Ändra & spara header och footer bakgrundsfärg
 //------------------------------------------------------------------------------
-import { changeStyle, setupCheckboxListener } from '../module/styleMode.js';
+import { changeStyle, setupCheckboxListener } from '../module/red-mode.js';
 changeStyle();
 setupCheckboxListener();
 //# sourceMappingURL=johto.js.map
