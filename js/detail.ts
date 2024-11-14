@@ -1,10 +1,12 @@
+// ---------------------------------------------------------------
+// Variabler för att hantera UI-element
 let checkbox = document.querySelector('#red-mode-toggle')! as HTMLInputElement;
 let header = document.querySelector('header')!;
 let navIcon = document.querySelector('.navbar-toggler-icon')! as HTMLElement;
 let navCollapse = document.querySelector('.navbar-collapse')! as HTMLElement;
 let navLink = document.querySelectorAll(
     '.navbar-nav a'
-) as NodeListOf<HTMLElement>; //as Node... är lösningen till när man väljer flera elements.
+) as NodeListOf<HTMLElement>;
 let footer = document.querySelector('footer')!;
 let footerIcons = document.querySelectorAll(
     '.footer-icon'
@@ -12,33 +14,42 @@ let footerIcons = document.querySelectorAll(
 let whiteIcons = document.querySelectorAll(
     '.footer-icon-white'
 ) as NodeListOf<HTMLElement>;
-let copyright = document.querySelector(
-    '.footer-container > p '
-)! as HTMLElement;
+let copyright = document.querySelector('.footer-container > p')! as HTMLElement;
 
-//Skapar först stilar för header när användare bockar av knappen.
+// ---------------------------------------------------------------
+// Funktion för att ändra stilar beroende på checkboxens status
 function changeStyleDetail() {
     if (checkbox.checked) {
+        // Aktivera "red mode"
         header.style.background = '#A92D22';
         navIcon.style.color = 'white';
         navCollapse.style.setProperty('background', 'transparent', 'important');
         copyright.style.color = 'white';
         footer.style.background = '#A92D22';
+
+        // Uppdatera navigationslänkar
         for (let i = 0; i < navLink.length; i++) {
             navLink[i].style.setProperty('color', 'white', 'important');
         }
+
+        // Hantera footer-ikoner
         for (let i = 0; i < footerIcons.length; i++) {
             whiteIcons[i].style.display = 'block';
             footerIcons[i].style.display = 'none';
         }
-    } else if (!checkbox.checked) {
+    } else {
+        // Återställ till standardläge
         header.style.background = 'white';
         navCollapse.style.setProperty('background', 'transparent', 'important');
         copyright.style.color = 'black';
         footer.style.background = 'white';
+
+        // Uppdatera navigationslänkar
         for (let i = 0; i < navLink.length; i++) {
             navLink[i].style.color = 'black';
         }
+
+        // Hantera footer-ikoner
         for (let i = 0; i < footerIcons.length; i++) {
             whiteIcons[i].style.display = 'none';
             footerIcons[i].style.display = 'block';
@@ -46,10 +57,10 @@ function changeStyleDetail() {
     }
 }
 
-// Så fort användaren klickar så sparas checkboxen status och ändrar webbläsares bakgrundsfärg
+// ---------------------------------------------------------------
+// Funktion för att lyssna på checkbox-statusändringar och spara status i localStorage
 export function setupCheckboxListener() {
     checkbox.addEventListener('click', function () {
-        // Värde måste vara en sträng därför man ska konvertera statusen till sträng
         localStorage.setItem(
             'checkboxStatus',
             JSON.stringify(checkbox.checked)
@@ -57,31 +68,31 @@ export function setupCheckboxListener() {
         changeStyleDetail();
     });
 }
+
+// Initiera checkbox-lyssnaren
 setupCheckboxListener();
 
-// Man hämtar statusen som man har sparat och applicera dess stilar till webbläsaren.
+// Hämta och tillämpa sparad checkbox-status vid sidladdning
 let saveCheckboxStatus = localStorage.getItem('checkboxStatus');
 if (saveCheckboxStatus) {
     checkbox.checked = JSON.parse(saveCheckboxStatus);
     changeStyleDetail();
 }
 
-//------------------------------------------------------------------------------
-// skapa ett URLSearchParams-objekt som innehåller alla parametrar från query-strängen
-//i webbläsarens aktuella URL. Den här query-strängen börjar efter frågetecknet (?) i en URL.
+// ---------------------------------------------------------------
+// Funktion för att hämta och visa Pokémon-data
 async function getPokemon() {
-    //window.location.search är en del av URL som innehåller själva query-strängen,
-    //alltså allt efter ? i URL
-    //Konvertera pokemonId från string till number genom använda parseInt()
+    // Hämta Pokémon-id från URL:s query-string
     let pokemonId: number = parseInt(
-        new URLSearchParams(window.location.search).get('id')! //Hämta pokemon id
+        new URLSearchParams(window.location.search).get('id')!
     );
 
     let response = await fetch(
         `https://pokeapi.co/api/v2/pokemon/${pokemonId}`
     );
-
     let pokemon = await response.json();
+
+    // Hämta HTML-element för att visa Pokémon-data
     let pokemonName = document.querySelector('.name-wrapp h1')!;
     let pokemonOrder = document.querySelector('.order')!;
     let pokemonImg = document.querySelector(
@@ -95,39 +106,32 @@ async function getPokemon() {
     let pokemonWeight = document.getElementById('weight')!;
     let pokemonHeight = document.getElementById('height')!;
 
+    // Uppdatera Pokémon-data i UI
     pokemonName.textContent = pokemon.name;
     pokemonImg.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemonId}.png`;
     pokemonOrder.textContent = `#${pokemon.id}`;
-    // Hämtar pokemon weight och height
     pokemonWeight.innerHTML = `${pokemon.weight}00g`;
     pokemonHeight.innerHTML = `${pokemon.height}0cm`;
 
     let pokemonTypeUrl = pokemon.types.map((type: any) => type.type.url);
 
+    // Funktion för att hämta Pokémon-typer
     async function fetchPokemonType() {
         try {
-            // Skapar en array av `fetch`-anrop för varje URL
-            // Eftersom vi har massa av type API så vi måste loopar varenda url
-            //och spara i variable promise
             let promises = pokemonTypeUrl.map((url: any) =>
                 fetch(url).then((response) => {
                     if (!response.ok) throw new Error('Kunde inte fetcha.');
                     return response.json();
                 })
             );
-            //Pormise.all() behövs när man jobbar med flera asynkrona operationer som kan köras parallellt
-            let data = await Promise.all(promises);
-            console.log(data);
 
+            let data = await Promise.all(promises);
+
+            // Uppdatera typbilder
             data.forEach((pokemonType, index) => {
-                //?. kontrollerar om sprites, ['generation-viii'] & ['legends-arceus']
-                //finns eller inte.
                 let typeImg =
                     pokemonType.sprites?.['generation-viii']?.['legends-arceus']
                         ?.name_icon;
-                if (typeImg) {
-                    console.log(data.length);
-                }
                 if (index === 0) {
                     pokemonFirstType.innerHTML = `<img src="${typeImg}" class="type" alt="...">`;
                 } else if (index === 1) {
@@ -138,9 +142,11 @@ async function getPokemon() {
             console.error(error);
         }
     }
+
+    // Hämta och visa Pokémon-typer
     fetchPokemonType();
 
-    // Back och forward funktion
+    // Funktion för navigering mellan Pokémon (föregående och nästa)
     let leftArrow = document.getElementById('left-arrow')! as HTMLAnchorElement;
     let rightArrow = document.getElementById(
         'right-arrow'
@@ -148,21 +154,22 @@ async function getPokemon() {
     leftArrow.href = `detail.html?id=${pokemonId - 1}`;
     rightArrow.href = `detail.html?id=${pokemonId + 1}`;
 
+    // Dölj vänsterpil om det är första Pokémon
     if (pokemonId === 1) {
         leftArrow.style.display = 'none';
     } else {
         leftArrow.style.display = 'block';
     }
+
     return pokemon;
 }
+
+// Hämta Pokémon-information
 getPokemon();
 
-//------------------------------------------------------------------------------
-//Ändra bakgrundsfärg beroende på pokemon typ
+// ---------------------------------------------------------------
+// Funktion för att ändra bakgrund beroende på Pokémon-typ
 let topBackground = document.querySelector('#pokemon-wrapper')!;
-let body = document.querySelector('body')!;
-
-// Skapar en mapp för alla pokemon typer och dess klassaer.
 let typeBackgroundMap: { [key: string]: string } = {
     grass: 'grass-background',
     fire: 'fire-background',
@@ -184,28 +191,24 @@ let typeBackgroundMap: { [key: string]: string } = {
     flying: 'flying-background'
 };
 
+// Funktion för att ändra bakgrund baserat på Pokémon-typ
 async function changeBackgroundPokemon() {
     let pokemon = await getPokemon();
-    let pokemonTypes: string[] = [];
+    let pokemonTypes: string[] = pokemon.types.map(
+        (type: any) => type.type.name
+    );
 
-    interface Type {
-        type: {
-            name: string;
-        };
-    }
+    // Rensa tidigare bakgrundsinställningar
+    topBackground.className = '';
 
-    // Hämta Pokémon-typer
-    pokemonTypes = pokemon.types.map((type: Type) => type.type.name);
-    // Ta bort tidigare typer
-    topBackground.className = ''; // Rensa tidigare klassnamn
-    // Hämta första typen och lägg till den motsvarande bakgrundsklassen
+    // Ta den första Pokémon-typen och använd motsvarande bakgrund
     let primaryType = pokemonTypes[0];
-    // Tex: typesBackgroundMap[grass]
     let backgroundClass = typeBackgroundMap[primaryType];
-    //Om backgroundClass finns, lägg till den med dess egenskaper
+
     if (backgroundClass) {
         topBackground.classList.add(backgroundClass);
     }
 }
-// Anropa funktionen för att ändra bakgrunden
+
+// Uppdatera bakgrunden baserat på Pokémon-typ
 changeBackgroundPokemon();
